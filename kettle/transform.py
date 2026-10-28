@@ -87,7 +87,12 @@ def parse_till_timestamp(value):
     ("2026-09-14T08:15:00"). Surrounding whitespace is ignored.
     Raise ValueError for anything else.
     """
-    raise NotImplementedError
+    value = value.strip()
+    if "/" in value:
+        return datetime.strptime(value, "%d/%m/%Y %H:%M")
+    if "T" not in value:
+        raise ValueError("Expected a UK timestamp or ISO date and time")
+    return datetime.fromisoformat(value)
 
 
 def normalise_product_name(raw_name, products):
