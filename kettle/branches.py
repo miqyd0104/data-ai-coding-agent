@@ -7,4 +7,5 @@ BRANCHES = {
     "dublin": {"format": "csv", "price_unit": "pounds", "currency": "EUR", "optional": False,
                "columns": (5, 0, 4, 1, 3, 2)},
     "edinburgh": {"format": "jsonl", "price_unit": "pence", "currency": "GBP", "optional": True},
+    "glasgow": {"format": "csv", "price_unit": "pounds", "currency": "GBP", "optional": True},
 }

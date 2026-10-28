@@ -1,5 +1,23 @@
 {
   "permissions": {
-    "defaultMode": "manual"
+    "defaultMode": "manual",
+    "deny": [
+      "Edit(./data/raw/**)",
+      "Read(./data/raw/loyalty_members.csv)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run python \"$CLAUDE_PROJECT_DIR/.claude/hooks/test-python-edit.py\"",
+            "timeout": 180
+          }
+        ]
+      }
+    ]
   }
 }
