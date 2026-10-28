@@ -6,11 +6,18 @@ from kettle.transform import clean_rows
 
 def test_leeds_row_shape_and_day_first_timestamp(products):
     rows = [["L1", "01/02/2026 09:00", "T1", " flat white ", "2", "3.40"]]
-    assert clean_rows(rows, "leeds", products=products) == [{
-        "transaction_id": "L1", "branch": "leeds", "sold_at": "2026-02-01T09:00:00",
-        "till_id": "T1", "product": "Flat White", "quantity": 2,
-        "unit_price_pence": 340, "line_total_pence": 680,
-    }]
+    assert clean_rows(rows, "leeds", products=products) == [
+        {
+            "transaction_id": "L1",
+            "branch": "leeds",
+            "sold_at": "2026-02-01T09:00:00",
+            "till_id": "T1",
+            "product": "Flat White",
+            "quantity": 2,
+            "unit_price_pence": 340,
+            "line_total_pence": 680,
+        }
+    ]
 
 
 def test_manchester_prices_are_already_pence(products):
@@ -51,18 +58,25 @@ def test_bad_quantity_is_skipped(products):
 
 def test_summary_counts_transactions_once_and_sums_lines(products):
     rows = [
-        {"branch": "leeds", "transaction_id": "L1", "quantity": 2,
-         "line_total_pence": 680},
-        {"branch": "leeds", "transaction_id": "L1", "quantity": 1,
-         "line_total_pence": 220},
-        {"branch": "york", "transaction_id": "Y1", "quantity": -1,
-         "line_total_pence": -350},
+        {"branch": "leeds", "transaction_id": "L1", "quantity": 2, "line_total_pence": 680},
+        {"branch": "leeds", "transaction_id": "L1", "quantity": 1, "line_total_pence": 220},
+        {"branch": "york", "transaction_id": "Y1", "quantity": -1, "line_total_pence": -350},
     ]
     assert build_summary(rows, "2026-09-14") == [
-        {"date": "2026-09-14", "branch": "leeds", "transactions": 1,
-         "items_sold": 3, "revenue_gbp": "9.00"},
-        {"date": "2026-09-14", "branch": "york", "transactions": 1,
-         "items_sold": -1, "revenue_gbp": "-3.50"},
+        {
+            "date": "2026-09-14",
+            "branch": "leeds",
+            "transactions": 1,
+            "items_sold": 3,
+            "revenue_gbp": "9.00",
+        },
+        {
+            "date": "2026-09-14",
+            "branch": "york",
+            "transactions": 1,
+            "items_sold": -1,
+            "revenue_gbp": "-3.50",
+        },
     ]
 
 

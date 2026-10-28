@@ -21,8 +21,16 @@ def load_sales(rows, output_dir, date):
     for r in rows:
         db.execute(
             "INSERT INTO sales VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-            (r["transaction_id"], r["branch"], r["sold_at"], r["till_id"], r["product"],
-             r["quantity"], r["unit_price_pence"], r["line_total_pence"]),
+            (
+                r["transaction_id"],
+                r["branch"],
+                r["sold_at"],
+                r["till_id"],
+                r["product"],
+                r["quantity"],
+                r["unit_price_pence"],
+                r["line_total_pence"],
+            ),
         )
     db.commit()
     db.close()

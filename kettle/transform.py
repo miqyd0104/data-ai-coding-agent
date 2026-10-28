@@ -3,6 +3,7 @@ from decimal import ROUND_FLOOR, ROUND_HALF_UP, Decimal, InvalidOperation
 
 from kettle.branches import BRANCHES
 
+
 def clean_rows(rows, branch, eur_rate=None, *, products, rejected=None, date=None):
     """Validate till rows, preserve refunds, and remove exact duplicate sales.
 
@@ -51,19 +52,21 @@ def clean_rows(rows, branch, eur_rate=None, *, products, rejected=None, date=Non
             seen.add(key)
             price_pence = source_price
             if rate is not None:
-                price_pence = int((Decimal(source_price) / rate).quantize(
-                    Decimal("1"), rounding=ROUND_HALF_UP
-                ))
-            cleaned.append({
-                "transaction_id": txn_id,
-                "branch": branch,
-                "sold_at": sold_at.isoformat(),
-                "till_id": till,
-                "product": product,
-                "quantity": qty,
-                "unit_price_pence": price_pence,
-                "line_total_pence": qty * price_pence,
-            })
+                price_pence = int(
+                    (Decimal(source_price) / rate).quantize(Decimal(1), rounding=ROUND_HALF_UP)
+                )
+            cleaned.append(
+                {
+                    "transaction_id": txn_id,
+                    "branch": branch,
+                    "sold_at": sold_at.isoformat(),
+                    "till_id": till,
+                    "product": product,
+                    "quantity": qty,
+                    "unit_price_pence": price_pence,
+                    "line_total_pence": qty * price_pence,
+                }
+            )
             source_totals.append(qty * source_price)
         except (ValueError, TypeError) as error:
             if rejected is not None:
@@ -81,15 +84,20 @@ def _allocate_fx_pennies(rows, source_totals, rate):
     """
     exact = [Decimal(total) / rate for total in source_totals]
     allocated = [int(total.to_integral_value(rounding=ROUND_FLOOR)) for total in exact]
-    target = int((Decimal(sum(source_totals)) / rate).quantize(
-        Decimal("1"), rounding=ROUND_HALF_UP
-    ))
-    order = sorted(range(len(rows)), key=lambda index: (
-        -(exact[index] - allocated[index]),
-        rows[index]["transaction_id"], rows[index]["till_id"], rows[index]["sold_at"],
-        rows[index]["product"], rows[index]["quantity"], source_totals[index],
-    ))
-    for index in order[:target - sum(allocated)]:
+    target = int((Decimal(sum(source_totals)) / rate).quantize(Decimal(1), rounding=ROUND_HALF_UP))
+    order = sorted(
+        range(len(rows)),
+        key=lambda index: (
+            -(exact[index] - allocated[index]),
+            rows[index]["transaction_id"],
+            rows[index]["till_id"],
+            rows[index]["sold_at"],
+            rows[index]["product"],
+            rows[index]["quantity"],
+            source_totals[index],
+        ),
+    )
+    for index in order[: target - sum(allocated)]:
         allocated[index] += 1
     for row, total in zip(rows, allocated):
         row["line_total_pence"] = total
@@ -155,6 +163,7 @@ def normalise_product_name(raw_name, products):
     >>> normalise_product_name(" flat-white ", products)
     'Flat White'
     """
+
     def match_key(name):
         return " ".join(name.replace("-", " ").split()).casefold()
 

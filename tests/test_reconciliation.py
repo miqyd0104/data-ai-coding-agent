@@ -1,11 +1,13 @@
-from kettle.transform import clean_rows
-from kettle.pipeline import run
-from decimal import ROUND_HALF_UP, Decimal
-from pathlib import Path
 import csv
 import json
 import sqlite3
+from decimal import ROUND_HALF_UP, Decimal
+from pathlib import Path
+
 import pytest
+
+from kettle.pipeline import run
+from kettle.transform import clean_rows
 
 
 def test_kc102_refunds_reduce_quantity_and_revenue(products):
@@ -29,9 +31,9 @@ def test_kc102_separate_sales_in_same_minute_are_preserved(products):
 def test_every_branch_matches_finance_z_reports_to_the_penny(tmp_path, date):
     with open("data/raw/z_reports.csv", encoding="utf-8") as stream:
         expected = [row for row in csv.DictReader(stream) if row["date"] == date]
-    rate = Decimal(str(json.loads(
-        Path(f"data/raw/exchange_rates/{date}.json").read_text()
-    )["rates"]["EUR"]))
+    rate = Decimal(
+        str(json.loads(Path(f"data/raw/exchange_rates/{date}.json").read_text())["rates"]["EUR"])
+    )
     actual = {row["branch"]: row for row in run(date, output_dir=tmp_path)}
     assert set(actual) == {row["branch"] for row in expected}
     for row in expected:
