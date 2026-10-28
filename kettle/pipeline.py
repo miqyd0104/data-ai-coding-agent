@@ -1,20 +1,19 @@
 import os
 
-from kettle.extract import read_eur_rate, read_till_export
+from kettle.branches import BRANCHES
+from kettle.extract import read_eur_rate, read_products, read_till_export
 from kettle.load import load_sales
 from kettle.report import build_summary, write_summary
 from kettle.transform import clean_rows
 
-BRANCHES = ["leeds", "manchester", "york", "dublin"]
-
-
 def run(date, data_dir="data", output_dir="output"):
     os.makedirs(output_dir, exist_ok=True)
+    products = read_products(data_dir)
 
     all_rows = []
     for branch in BRANCHES:
         print("Processing " + branch + "...")
-        rows = read_till_export(data_dir, branch, date)
+        rows = read_till_export(data_dir, branch, date, products=products)
         rate = None
         if branch == "dublin":
             rate = read_eur_rate(data_dir, date)
