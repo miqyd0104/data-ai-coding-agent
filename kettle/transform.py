@@ -1,5 +1,5 @@
 from datetime import datetime
-from decimal import ROUND_HALF_UP, Decimal, InvalidOperation
+from decimal import ROUND_FLOOR, ROUND_HALF_UP, Decimal, InvalidOperation
 
 from kettle.branches import BRANCHES
 
@@ -18,6 +18,7 @@ def clean_rows(rows, branch, eur_rate=None, *, products, rejected=None, date=Non
         if not rate.is_finite() or rate <= 0:
             raise ValueError("A positive EUR-per-GBP rate is required")
     cleaned = []
+    source_totals = []
     seen = set()
     for row_number, row in enumerate(rows, 1):
         try:
@@ -63,10 +64,35 @@ def clean_rows(rows, branch, eur_rate=None, *, products, rejected=None, date=Non
                 "unit_price_pence": price_pence,
                 "line_total_pence": qty * price_pence,
             })
+            source_totals.append(qty * source_price)
         except (ValueError, TypeError) as error:
             if rejected is not None:
                 rejected.append({"branch": branch, "row_number": row_number, "reason": str(error)})
+    if rate is not None and cleaned:
+        _allocate_fx_pennies(cleaned, source_totals, rate)
     return cleaned
+
+
+def _allocate_fx_pennies(rows, source_totals, rate):
+    """Largest-remainder allocation, including refunds, of the rounded day total.
+
+    Each line differs from its exact conversion by less than one penny. Stable
+    transaction keys break ties so changing input order cannot change a sale.
+    """
+    exact = [Decimal(total) / rate for total in source_totals]
+    allocated = [int(total.to_integral_value(rounding=ROUND_FLOOR)) for total in exact]
+    target = int((Decimal(sum(source_totals)) / rate).quantize(
+        Decimal("1"), rounding=ROUND_HALF_UP
+    ))
+    order = sorted(range(len(rows)), key=lambda index: (
+        -(exact[index] - allocated[index]),
+        rows[index]["transaction_id"], rows[index]["till_id"], rows[index]["sold_at"],
+        rows[index]["product"], rows[index]["quantity"], source_totals[index],
+    ))
+    for index in order[:target - sum(allocated)]:
+        allocated[index] += 1
+    for row, total in zip(rows, allocated):
+        row["line_total_pence"] = total
 
 
 def format_pence(pence):

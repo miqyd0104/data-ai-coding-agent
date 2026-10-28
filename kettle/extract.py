@@ -1,6 +1,7 @@
 import csv
 import json
 import os
+from decimal import Decimal
 
 from kettle.branches import BRANCHES
 
@@ -39,6 +40,8 @@ def read_products(data_dir):
 
 def read_eur_rate(data_dir, date):
     path = os.path.join(data_dir, "raw", "exchange_rates", date + ".json")
-    with open(path) as f:
-        data = json.load(f)
+    with open(path, encoding="utf-8") as f:
+        data = json.load(f, parse_float=Decimal)
+    if data.get("base") != "GBP" or data.get("date") != date:
+        raise ValueError("Exchange rate must use GBP as base and match the processing date")
     return data["rates"]["EUR"]
