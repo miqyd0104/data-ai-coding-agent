@@ -18,10 +18,10 @@ def test_manchester_prices_are_already_pence():
     assert clean_rows([row], "manchester")[0]["line_total_pence"] == 700
 
 
-def test_dublin_inherited_conversion():
+def test_dublin_conversion_after_kc101():
     row = ["2026-09-14T09:00:00", "Latte", "11.71", "1", "T1", "D1"]
-    # BUG: KC-101 multiplies by EUR per GBP, inflating the price.
-    assert clean_rows([row], "dublin", 1.1712)[0]["unit_price_pence"] == 1371
+    # KC-101 corrected the original snapshot of 1371 pence.
+    assert clean_rows([row], "dublin", 1.1712)[0]["unit_price_pence"] == 1000
 
 
 def test_inherited_negative_quantity():

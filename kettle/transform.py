@@ -29,7 +29,8 @@ def clean_rows(rows, branch, eur_rate=None):
                 price_pence = int(round(float(price) * 100))
 
             if branch == "dublin":
-                price_pence = int(round(price_pence * eur_rate))  # convert to GBP
+                # Rates use GBP as the base: EUR per GBP, so divide.
+                price_pence = int(round(Decimal(price_pence) / Decimal(str(eur_rate))))
 
             product = product.strip().title()
 
