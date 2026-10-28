@@ -8,8 +8,8 @@ records reconcile** to Finance's transaction counts, net quantities and revenue.
 The Claude-specific interactive learning demonstrations remain unperformed:
 Claude Code is not installed here. Permission settings are prepared, the hook
 was tested directly, and no Claude session behaviour is claimed. Details are
-recorded in the exercise 02 and 04 answers below. Changes are committed locally;
-they have not been pushed to GitHub.
+recorded in the exercise 02 and 04 answers below. Changes are committed on the
+`exercise-05` branch and published to this GitHub repository.
 
 ## Run it
 
