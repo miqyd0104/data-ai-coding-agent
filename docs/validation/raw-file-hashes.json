@@ -1,0 +1,19 @@
+{
+  "data/raw/exchange_rates/2026-09-14.json": "ba29c6134bf930093571a6f687d47c31bd2627e08c002b17c74b9ac9d5f69d08",
+  "data/raw/exchange_rates/2026-09-15.json": "c3a42e99d04af0fc6cbb72004ca4358b96b6ea1a9a67a0807c72b652c9c5583a",
+  "data/raw/exchange_rates/2026-09-16.json": "5a8b9ad12d519feae8e70d8f620450ce19dd7bd7112f6536ba42c1469d29b033",
+  "data/raw/tills/dublin_2026-09-14.csv": "087a3159e7b42ea04720527ffeec65cd2c7c6f2dae189d1a5032c6e11236e88a",
+  "data/raw/tills/dublin_2026-09-15.csv": "ebf2619f5d8a9f915c540b15bf64118e50c25fb1168c787b85b26e17dbaeb60c",
+  "data/raw/tills/dublin_2026-09-16.csv": "23ae19e39517d80110c7accb9e9af2f624bce4a29121f8876aca7a08659371cd",
+  "data/raw/tills/edinburgh_2026-09-16.jsonl": "6f64ab28fdc884d21441060ee7ddbb4302067232e69e6efaae7825a89fcfb7fe",
+  "data/raw/tills/leeds_2026-09-14.csv": "8c5e9ca15e482adce228c96aec3ab1fc159cde71d47fd9ed29124cdfb883125e",
+  "data/raw/tills/leeds_2026-09-15.csv": "c1064f161403baeb5deb5abec3eb7286f5498310b2d5aa6fc36dbfd56e44ce91",
+  "data/raw/tills/leeds_2026-09-16.csv": "c7733571bd2bcf2aa9de3dcbbe27e05f0964db6d90e06195f16cf6ed30ef42f8",
+  "data/raw/tills/manchester_2026-09-14.csv": "b9eb77d58b71a0cce8196d4536ea3de9fb538ad22536ce13b073153c0be6222b",
+  "data/raw/tills/manchester_2026-09-15.csv": "373eec932d848f53438fc283df8e9705f964344bdf3201f5e4d8fd12761e91bf",
+  "data/raw/tills/manchester_2026-09-16.csv": "8e37084b72df2f379610c9af3d708ce2907a9a608159475ab4d766b78f62f213",
+  "data/raw/tills/york_2026-09-14.csv": "29a28b6dded023374e2d25521680e16619c09689f5a02760ade0a0d2ae7db7bb",
+  "data/raw/tills/york_2026-09-15.csv": "fa3f32ce462fe41d91333390d34897e6d72e3beddafa0ba58986fc6295b85a0e",
+  "data/raw/tills/york_2026-09-16.csv": "bbb8519422608180068accfd408de300bc043bdc461de58a7196ba7f2c1bbd7d",
+  "data/raw/z_reports.csv": "0141a2a1dc6ff1d7cd410b5c82d720bc2ee5f1491c6afbfd0d2e86f70a833106"
+}

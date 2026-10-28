@@ -1,0 +1,19 @@
+{
+  "branch_days_reconciled": 13,
+  "database_sales_rows": 2688,
+  "database_integrity": "ok",
+  "git_raw_data_diff_empty": true,
+  "original_test_files_unchanged": [
+    "tests/test_transform.py",
+    "tests/test_pipeline_smoke.py"
+  ],
+  "loyalty_members_file_opened": false,
+  "rejected_rows_by_day": {
+    "2026-09-14": 8,
+    "2026-09-15": 8,
+    "2026-09-16": 8
+  },
+  "claude_executable_available": false,
+  "claude_interactive_demonstrations_run": false,
+  "raw_nonpersonal_files_unchanged": 17
+}

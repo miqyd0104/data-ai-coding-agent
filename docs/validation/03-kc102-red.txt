@@ -1,0 +1,30 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+________________ test_kc102_refunds_reduce_quantity_and_revenue ________________
+
+    def test_kc102_refunds_reduce_quantity_and_revenue():
+        row = ["L1", "14/09/2026 09:00", "T1", "Latte", "-2", "3.50"]
+        sale = clean_rows([row], "leeds")[0]
+>       assert sale["quantity"] == -2
+E       assert 2 == -2
+
+tests/test_reconciliation.py:7: AssertionError
+____________ test_kc102_separate_sales_in_same_minute_are_preserved ____________
+
+    def test_kc102_separate_sales_in_same_minute_are_preserved():
+        rows = [
+            ["L1", "14/09/2026 09:00", "T1", "Latte", "1", "3.50"],
+            ["L2", "14/09/2026 09:00", "T2", "Latte", "1", "3.50"],
+            ["L1", "14/09/2026 09:00", "T1", "Latte", "2", "3.50"],
+            ["L1", "14/09/2026 09:00", "T1", "Latte", "1", "3.40"],
+        ]
+>       assert len(clean_rows(rows, "leeds")) == 4
+E       AssertionError: assert 1 == 4
+E        +  where 1 = len([{'transaction_id': 'L1', 'branch': 'leeds', 'sold_at': '2026-09-14T09:00:00', 'till_id': 'T1', ...}])
+E        +    where [{'transaction_id': 'L1', 'branch': 'leeds', 'sold_at': '2026-09-14T09:00:00', 'till_id': 'T1', ...}] = clean_rows([['L1', '14/09/2026 09:00', 'T1', 'Latte', '1', '3.50'], ['L2', '14/09/2026 09:00', 'T2', 'Latte', '1', '3.50'], ['L1', '14/09/2026 09:00', 'T1', 'Latte', '2', '3.50'], ['L1', '14/09/2026 09:00', 'T1', 'Latte', '1', '3.40']], 'leeds')
+
+tests/test_reconciliation.py:18: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_reconciliation.py::test_kc102_refunds_reduce_quantity_and_revenue
+FAILED tests/test_reconciliation.py::test_kc102_separate_sales_in_same_minute_are_preserved
+2 failed in 0.02s

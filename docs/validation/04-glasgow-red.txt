@@ -1,0 +1,58 @@
+F.                                                                       [100%]
+=================================== FAILURES ===================================
+_______________ test_add_till_skill_glasgow_reuses_leeds_format ________________
+
+tmp_path = PosixPath('/private/var/folders/35/3vh71s8129qdl0r43y_m_2dh0000gn/T/pytest-of-syedmiqdadhamdani/pytest-18/test_add_till_skill_glasgow_re0')
+
+    def test_add_till_skill_glasgow_reuses_leeds_format(tmp_path):
+        data = tmp_path / "data"
+        tills = data / "raw/tills"
+        tills.mkdir(parents=True)
+        (data / "reference").mkdir()
+        (data / "reference/products.json").write_text(
+            Path("data/reference/products.json").read_text()
+        )
+        rates = data / "raw/exchange_rates"
+        rates.mkdir()
+        (rates / "2026-09-17.json").write_text(json.dumps({
+            "base": "GBP", "date": "2026-09-17", "rates": {"EUR": 1.2},
+        }))
+        header = "transaction_id,timestamp,till_id,product,quantity,unit_price\n"
+        for branch in ["leeds", "manchester", "york", "dublin"]:
+            (tills / f"{branch}_2026-09-17.csv").write_text(header)
+        rows = [
+            ["G1", "17/09/2026 09:00", "T1", "flat wht", "2", "3.40"],
+            ["G1", "17/09/2026 09:00", "T1", "Croissant", "1", "2.60"],
+            ["G1", "17/09/2026 09:00", "T1", "flat wht", "2", "3.40"],
+            ["G2", "17/09/2026 09:00", "T2", "Flat White", "-1", "3.40"],
+            ["G3", "17/09/2026 09:00", "T1", "Mocha", "1", "3.40"],
+            ["G4", "17/09/2026 09:00", "T2", "Flat White", "1", "3.40"],
+        ]
+        with (tills / "glasgow_2026-09-17.csv").open("w", newline="") as stream:
+            stream.write(header)
+            csv.writer(stream).writerows(rows)
+        summary = run("2026-09-17", data_dir=data, output_dir=tmp_path / "output")
+>       assert summary == [{"date": "2026-09-17", "branch": "glasgow", "transactions": 3,
+                            "items_sold": 3, "revenue_gbp": "9.40"}]
+E       AssertionError: assert [] == [{'date': '20...old': 3, ...}]
+E         
+E         Right contains one more item: {'date': '2026-09-17', 'branch': 'glasgow', 'transactions': 3, 'items_sold': 3, ...}
+E         Use -v to get more diff
+
+tests/test_glasgow.py:36: AssertionError
+----------------------------- Captured stdout call -----------------------------
+Processing leeds...
+  0 rows
+Processing manchester...
+  0 rows
+Processing york...
+  0 rows
+Processing dublin...
+  0 rows
+Processing edinburgh...
+  0 rows
+Rejected 0 invalid rows; see rejected_rows_2026-09-17.csv
+Done! Summary written to /private/var/folders/35/3vh71s8129qdl0r43y_m_2dh0000gn/T/pytest-of-syedmiqdadhamdani/pytest-18/test_add_till_skill_glasgow_re0/output/daily_summary_2026-09-17.csv
+=========================== short test summary info ============================
+FAILED tests/test_glasgow.py::test_add_till_skill_glasgow_reuses_leeds_format
+1 failed, 1 passed in 0.05s

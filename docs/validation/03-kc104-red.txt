@@ -1,0 +1,45 @@
+F.F                                                                      [100%]
+=================================== FAILURES ===================================
+_________ test_kc104_jsonl_transactions_are_flattened_into_shared_rows _________
+
+tmp_path = PosixPath('/private/var/folders/35/3vh71s8129qdl0r43y_m_2dh0000gn/T/pytest-of-syedmiqdadhamdani/pytest-11/test_kc104_jsonl_transactions_0')
+
+    def test_kc104_jsonl_transactions_are_flattened_into_shared_rows(tmp_path):
+        tills = tmp_path / "raw" / "tills"
+        tills.mkdir(parents=True)
+        transaction = {
+            "transaction_id": "E1", "timestamp": "2026-09-16T09:00:00", "till": "T1",
+            "items": [{"sku": "FW01", "qty": 2, "price_pence": 340},
+                      {"sku": "CR01", "qty": 1, "price_pence": 260}],
+        }
+        (tills / "edinburgh_2026-09-16.jsonl").write_text(json.dumps(transaction) + "\n")
+>       rows = read_till_export(tmp_path, "edinburgh", "2026-09-16",
+                                products=read_products("data"))
+E       TypeError: read_till_export() got an unexpected keyword argument 'products'
+
+tests/test_edinburgh.py:16: TypeError
+________________ test_kc104_edinburgh_reconciles_on_opening_day ________________
+
+tmp_path = PosixPath('/private/var/folders/35/3vh71s8129qdl0r43y_m_2dh0000gn/T/pytest-of-syedmiqdadhamdani/pytest-11/test_kc104_edinburgh_reconcile0')
+
+    def test_kc104_edinburgh_reconciles_on_opening_day(tmp_path):
+        summary = run("2026-09-16", output_dir=tmp_path)
+>       edinburgh = next(row for row in summary if row["branch"] == "edinburgh")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+tests/test_edinburgh.py:31: StopIteration
+----------------------------- Captured stdout call -----------------------------
+Processing leeds...
+  186 rows
+Processing manchester...
+  243 rows
+Processing york...
+  153 rows
+Processing dublin...
+  179 rows
+Done! Summary written to /private/var/folders/35/3vh71s8129qdl0r43y_m_2dh0000gn/T/pytest-of-syedmiqdadhamdani/pytest-11/test_kc104_edinburgh_reconcile0/daily_summary_2026-09-16.csv
+=========================== short test summary info ============================
+FAILED tests/test_edinburgh.py::test_kc104_jsonl_transactions_are_flattened_into_shared_rows
+FAILED tests/test_edinburgh.py::test_kc104_edinburgh_reconciles_on_opening_day
+2 failed, 1 passed in 0.04s

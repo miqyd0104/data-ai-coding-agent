@@ -1,0 +1,4 @@
+kettle/extract.py:32:17: TRY004 Prefer `TypeError` exception for invalid type
+tests/test_extract.py:11:39: ISC004 Unparenthesized implicit string concatenation in collection
+Found 8 errors (6 fixed, 2 remaining).
+1 unsafe fix available with `--fix --unsafe-fixes`.

@@ -1,0 +1,38 @@
+..F                                                                      [100%]
+=================================== FAILURES ===================================
+________________ test_kc104_edinburgh_reconciles_on_opening_day ________________
+
+tmp_path = PosixPath('/private/var/folders/35/3vh71s8129qdl0r43y_m_2dh0000gn/T/pytest-of-syedmiqdadhamdani/pytest-12/test_kc104_edinburgh_reconcile0')
+
+    def test_kc104_edinburgh_reconciles_on_opening_day(tmp_path):
+        summary = run("2026-09-16", output_dir=tmp_path)
+        edinburgh = next(row for row in summary if row["branch"] == "edinburgh")
+>       assert edinburgh == {
+            "date": "2026-09-16", "branch": "edinburgh", "transactions": 120,
+            "items_sold": 207, "revenue_gbp": "664.00",
+        }
+E       AssertionError: assert {'date': '202...ld': 210, ...} == {'date': '202...ld': 207, ...}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'transactions': 118} != {'transactions': 120}
+E         {'items_sold': 210} != {'items_sold': 207}
+E         {'revenue_gbp': '668.60'} != {'revenue_gbp': '664.00'}
+E         Use -v to get more diff
+
+tests/test_edinburgh.py:32: AssertionError
+----------------------------- Captured stdout call -----------------------------
+Processing leeds...
+  186 rows
+Processing manchester...
+  243 rows
+Processing york...
+  153 rows
+Processing dublin...
+  179 rows
+Processing edinburgh...
+  182 rows
+Done! Summary written to /private/var/folders/35/3vh71s8129qdl0r43y_m_2dh0000gn/T/pytest-of-syedmiqdadhamdani/pytest-12/test_kc104_edinburgh_reconcile0/daily_summary_2026-09-16.csv
+=========================== short test summary info ============================
+FAILED tests/test_edinburgh.py::test_kc104_edinburgh_reconciles_on_opening_day
+1 failed, 2 passed in 0.04s

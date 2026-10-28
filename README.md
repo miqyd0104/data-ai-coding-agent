@@ -1,5 +1,10 @@
 # Kettle & Crumb: the inherited sales pipeline
 
+> **Completed working copy:** the coding exercises and stretch tasks are implemented.
+> Tests now pass; the baseline failures described below refer to the original starter.
+> See [COMPLETION.md](COMPLETION.md) for results, exercise answers and the remaining
+> Claude-specific interactive demonstrations.
+
 > An exercise repo for learning to work with an AI coding agent (Claude Code) as a data engineer.
 
 ## The story

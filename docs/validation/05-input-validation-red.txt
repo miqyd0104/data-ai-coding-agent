@@ -1,0 +1,220 @@
+FFFFF..FFF                                                               [100%]
+=================================== FAILURES ===================================
+__ test_malformed_jsonl_is_reported_without_losing_next_transaction[{broken] ___
+
+tmp_path = PosixPath('/private/var/folders/35/3vh71s8129qdl0r43y_m_2dh0000gn/T/pytest-of-syedmiqdadhamdani/pytest-25/test_malformed_jsonl_is_report0')
+products = [{'id': 'FW01', 'name': 'Flat White', 'category': 'Coffee', 'aliases': ['flat wht']}, {'id': 'LT01', 'name': 'Latte', ...gory': 'Coffee', 'aliases': ['caffe latte']}, {'id': 'CR01', 'name': 'Croissant', 'category': 'Bakery', 'aliases': []}]
+bad_line = '{broken'
+
+    @pytest.mark.parametrize("bad_line", ["{broken", "{}", "[]", '{"items": false}',
+                                          '{"transaction_id":"E0","timestamp":"x",'
+                                          '"till":"T1","items":[{}]}'])
+    def test_malformed_jsonl_is_reported_without_losing_next_transaction(tmp_path, products, bad_line):
+        tills = tmp_path / "raw/tills"
+        tills.mkdir(parents=True)
+        good = {"transaction_id": "E1", "timestamp": "2026-09-16T09:00:00", "till": "T1",
+                "items": [{"sku": "LT01", "qty": 1, "price_pence": 350}]}
+        (tills / "edinburgh_2026-09-16.jsonl").write_text(
+            bad_line + "\n" + json.dumps(good) + "\n"
+        )
+        rejected = []
+>       rows = read_till_export(tmp_path, "edinburgh", "2026-09-16", products=products,
+                                rejected=rejected)
+E       TypeError: read_till_export() got an unexpected keyword argument 'rejected'
+
+tests/test_extract.py:22: TypeError
+_____ test_malformed_jsonl_is_reported_without_losing_next_transaction[{}] _____
+
+tmp_path = PosixPath('/private/var/folders/35/3vh71s8129qdl0r43y_m_2dh0000gn/T/pytest-of-syedmiqdadhamdani/pytest-25/test_malformed_jsonl_is_report1')
+products = [{'id': 'FW01', 'name': 'Flat White', 'category': 'Coffee', 'aliases': ['flat wht']}, {'id': 'LT01', 'name': 'Latte', ...gory': 'Coffee', 'aliases': ['caffe latte']}, {'id': 'CR01', 'name': 'Croissant', 'category': 'Bakery', 'aliases': []}]
+bad_line = '{}'
+
+    @pytest.mark.parametrize("bad_line", ["{broken", "{}", "[]", '{"items": false}',
+                                          '{"transaction_id":"E0","timestamp":"x",'
+                                          '"till":"T1","items":[{}]}'])
+    def test_malformed_jsonl_is_reported_without_losing_next_transaction(tmp_path, products, bad_line):
+        tills = tmp_path / "raw/tills"
+        tills.mkdir(parents=True)
+        good = {"transaction_id": "E1", "timestamp": "2026-09-16T09:00:00", "till": "T1",
+                "items": [{"sku": "LT01", "qty": 1, "price_pence": 350}]}
+        (tills / "edinburgh_2026-09-16.jsonl").write_text(
+            bad_line + "\n" + json.dumps(good) + "\n"
+        )
+        rejected = []
+>       rows = read_till_export(tmp_path, "edinburgh", "2026-09-16", products=products,
+                                rejected=rejected)
+E       TypeError: read_till_export() got an unexpected keyword argument 'rejected'
+
+tests/test_extract.py:22: TypeError
+_____ test_malformed_jsonl_is_reported_without_losing_next_transaction[[]] _____
+
+tmp_path = PosixPath('/private/var/folders/35/3vh71s8129qdl0r43y_m_2dh0000gn/T/pytest-of-syedmiqdadhamdani/pytest-25/test_malformed_jsonl_is_report2')
+products = [{'id': 'FW01', 'name': 'Flat White', 'category': 'Coffee', 'aliases': ['flat wht']}, {'id': 'LT01', 'name': 'Latte', ...gory': 'Coffee', 'aliases': ['caffe latte']}, {'id': 'CR01', 'name': 'Croissant', 'category': 'Bakery', 'aliases': []}]
+bad_line = '[]'
+
+    @pytest.mark.parametrize("bad_line", ["{broken", "{}", "[]", '{"items": false}',
+                                          '{"transaction_id":"E0","timestamp":"x",'
+                                          '"till":"T1","items":[{}]}'])
+    def test_malformed_jsonl_is_reported_without_losing_next_transaction(tmp_path, products, bad_line):
+        tills = tmp_path / "raw/tills"
+        tills.mkdir(parents=True)
+        good = {"transaction_id": "E1", "timestamp": "2026-09-16T09:00:00", "till": "T1",
+                "items": [{"sku": "LT01", "qty": 1, "price_pence": 350}]}
+        (tills / "edinburgh_2026-09-16.jsonl").write_text(
+            bad_line + "\n" + json.dumps(good) + "\n"
+        )
+        rejected = []
+>       rows = read_till_export(tmp_path, "edinburgh", "2026-09-16", products=products,
+                                rejected=rejected)
+E       TypeError: read_till_export() got an unexpected keyword argument 'rejected'
+
+tests/test_extract.py:22: TypeError
+_ test_malformed_jsonl_is_reported_without_losing_next_transaction[{"items": false}] _
+
+tmp_path = PosixPath('/private/var/folders/35/3vh71s8129qdl0r43y_m_2dh0000gn/T/pytest-of-syedmiqdadhamdani/pytest-25/test_malformed_jsonl_is_report3')
+products = [{'id': 'FW01', 'name': 'Flat White', 'category': 'Coffee', 'aliases': ['flat wht']}, {'id': 'LT01', 'name': 'Latte', ...gory': 'Coffee', 'aliases': ['caffe latte']}, {'id': 'CR01', 'name': 'Croissant', 'category': 'Bakery', 'aliases': []}]
+bad_line = '{"items": false}'
+
+    @pytest.mark.parametrize("bad_line", ["{broken", "{}", "[]", '{"items": false}',
+                                          '{"transaction_id":"E0","timestamp":"x",'
+                                          '"till":"T1","items":[{}]}'])
+    def test_malformed_jsonl_is_reported_without_losing_next_transaction(tmp_path, products, bad_line):
+        tills = tmp_path / "raw/tills"
+        tills.mkdir(parents=True)
+        good = {"transaction_id": "E1", "timestamp": "2026-09-16T09:00:00", "till": "T1",
+                "items": [{"sku": "LT01", "qty": 1, "price_pence": 350}]}
+        (tills / "edinburgh_2026-09-16.jsonl").write_text(
+            bad_line + "\n" + json.dumps(good) + "\n"
+        )
+        rejected = []
+>       rows = read_till_export(tmp_path, "edinburgh", "2026-09-16", products=products,
+                                rejected=rejected)
+E       TypeError: read_till_export() got an unexpected keyword argument 'rejected'
+
+tests/test_extract.py:22: TypeError
+_ test_malformed_jsonl_is_reported_without_losing_next_transaction[{"transaction_id":"E0","timestamp":"x","till":"T1","items":[{}]}] _
+
+tmp_path = PosixPath('/private/var/folders/35/3vh71s8129qdl0r43y_m_2dh0000gn/T/pytest-of-syedmiqdadhamdani/pytest-25/test_malformed_jsonl_is_report4')
+products = [{'id': 'FW01', 'name': 'Flat White', 'category': 'Coffee', 'aliases': ['flat wht']}, {'id': 'LT01', 'name': 'Latte', ...gory': 'Coffee', 'aliases': ['caffe latte']}, {'id': 'CR01', 'name': 'Croissant', 'category': 'Bakery', 'aliases': []}]
+bad_line = '{"transaction_id":"E0","timestamp":"x","till":"T1","items":[{}]}'
+
+    @pytest.mark.parametrize("bad_line", ["{broken", "{}", "[]", '{"items": false}',
+                                          '{"transaction_id":"E0","timestamp":"x",'
+                                          '"till":"T1","items":[{}]}'])
+    def test_malformed_jsonl_is_reported_without_losing_next_transaction(tmp_path, products, bad_line):
+        tills = tmp_path / "raw/tills"
+        tills.mkdir(parents=True)
+        good = {"transaction_id": "E1", "timestamp": "2026-09-16T09:00:00", "till": "T1",
+                "items": [{"sku": "LT01", "qty": 1, "price_pence": 350}]}
+        (tills / "edinburgh_2026-09-16.jsonl").write_text(
+            bad_line + "\n" + json.dumps(good) + "\n"
+        )
+        rejected = []
+>       rows = read_till_export(tmp_path, "edinburgh", "2026-09-16", products=products,
+                                rejected=rejected)
+E       TypeError: read_till_export() got an unexpected keyword argument 'rejected'
+
+tests/test_extract.py:22: TypeError
+__________ test_processing_date_must_be_iso_calendar_date[not-a-date] __________
+
+tmp_path = PosixPath('/private/var/folders/35/3vh71s8129qdl0r43y_m_2dh0000gn/T/pytest-of-syedmiqdadhamdani/pytest-25/test_processing_date_must_be_i0')
+date = 'not-a-date'
+
+    @pytest.mark.parametrize("date", ["not-a-date", "2026-09-31", "20260914"])
+    def test_processing_date_must_be_iso_calendar_date(tmp_path, date):
+        with pytest.raises(ValueError, match="YYYY-MM-DD"):
+>           run(date, output_dir=tmp_path)
+
+tests/test_extract.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+kettle/pipeline.py:23: in run
+    rows = read_till_export(data_dir, branch, date, products=products)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+data_dir = 'data', branch = 'leeds', date = 'not-a-date'
+products = [{'id': 'FW01', 'name': 'Flat White', 'category': 'Coffee', 'price_pence': 340, ...}, {'id': 'LT01', 'name': 'Latte', ...e', 'price_pence': 240, ...}, {'id': 'TE01', 'name': 'Breakfast Tea', 'category': 'Tea', 'price_pence': 220, ...}, ...]
+
+    def read_till_export(data_dir, branch, date, products=None):
+        config = BRANCHES[branch]
+        path = os.path.join(data_dir, "raw", "tills", f"{branch}_{date}.{config['format']}")
+        try:
+>           stream = open(path, encoding="utf-8")
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           FileNotFoundError: [Errno 2] No such file or directory: 'data/raw/tills/leeds_not-a-date.csv'
+
+kettle/extract.py:13: FileNotFoundError
+----------------------------- Captured stdout call -----------------------------
+Processing leeds...
+__________ test_processing_date_must_be_iso_calendar_date[2026-09-31] __________
+
+tmp_path = PosixPath('/private/var/folders/35/3vh71s8129qdl0r43y_m_2dh0000gn/T/pytest-of-syedmiqdadhamdani/pytest-25/test_processing_date_must_be_i1')
+date = '2026-09-31'
+
+    @pytest.mark.parametrize("date", ["not-a-date", "2026-09-31", "20260914"])
+    def test_processing_date_must_be_iso_calendar_date(tmp_path, date):
+        with pytest.raises(ValueError, match="YYYY-MM-DD"):
+>           run(date, output_dir=tmp_path)
+
+tests/test_extract.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+kettle/pipeline.py:23: in run
+    rows = read_till_export(data_dir, branch, date, products=products)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+data_dir = 'data', branch = 'leeds', date = '2026-09-31'
+products = [{'id': 'FW01', 'name': 'Flat White', 'category': 'Coffee', 'price_pence': 340, ...}, {'id': 'LT01', 'name': 'Latte', ...e', 'price_pence': 240, ...}, {'id': 'TE01', 'name': 'Breakfast Tea', 'category': 'Tea', 'price_pence': 220, ...}, ...]
+
+    def read_till_export(data_dir, branch, date, products=None):
+        config = BRANCHES[branch]
+        path = os.path.join(data_dir, "raw", "tills", f"{branch}_{date}.{config['format']}")
+        try:
+>           stream = open(path, encoding="utf-8")
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           FileNotFoundError: [Errno 2] No such file or directory: 'data/raw/tills/leeds_2026-09-31.csv'
+
+kettle/extract.py:13: FileNotFoundError
+----------------------------- Captured stdout call -----------------------------
+Processing leeds...
+___________ test_processing_date_must_be_iso_calendar_date[20260914] ___________
+
+tmp_path = PosixPath('/private/var/folders/35/3vh71s8129qdl0r43y_m_2dh0000gn/T/pytest-of-syedmiqdadhamdani/pytest-25/test_processing_date_must_be_i2')
+date = '20260914'
+
+    @pytest.mark.parametrize("date", ["not-a-date", "2026-09-31", "20260914"])
+    def test_processing_date_must_be_iso_calendar_date(tmp_path, date):
+        with pytest.raises(ValueError, match="YYYY-MM-DD"):
+>           run(date, output_dir=tmp_path)
+
+tests/test_extract.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+kettle/pipeline.py:23: in run
+    rows = read_till_export(data_dir, branch, date, products=products)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+data_dir = 'data', branch = 'leeds', date = '20260914'
+products = [{'id': 'FW01', 'name': 'Flat White', 'category': 'Coffee', 'price_pence': 340, ...}, {'id': 'LT01', 'name': 'Latte', ...e', 'price_pence': 240, ...}, {'id': 'TE01', 'name': 'Breakfast Tea', 'category': 'Tea', 'price_pence': 220, ...}, ...]
+
+    def read_till_export(data_dir, branch, date, products=None):
+        config = BRANCHES[branch]
+        path = os.path.join(data_dir, "raw", "tills", f"{branch}_{date}.{config['format']}")
+        try:
+>           stream = open(path, encoding="utf-8")
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           FileNotFoundError: [Errno 2] No such file or directory: 'data/raw/tills/leeds_20260914.csv'
+
+kettle/extract.py:13: FileNotFoundError
+----------------------------- Captured stdout call -----------------------------
+Processing leeds...
+=========================== short test summary info ============================
+FAILED tests/test_extract.py::test_malformed_jsonl_is_reported_without_losing_next_transaction[{broken]
+FAILED tests/test_extract.py::test_malformed_jsonl_is_reported_without_losing_next_transaction[{}]
+FAILED tests/test_extract.py::test_malformed_jsonl_is_reported_without_losing_next_transaction[[]]
+FAILED tests/test_extract.py::test_malformed_jsonl_is_reported_without_losing_next_transaction[{"items": false}]
+FAILED tests/test_extract.py::test_malformed_jsonl_is_reported_without_losing_next_transaction[{"transaction_id":"E0","timestamp":"x","till":"T1","items":[{}]}]
+FAILED tests/test_extract.py::test_processing_date_must_be_iso_calendar_date[not-a-date]
+FAILED tests/test_extract.py::test_processing_date_must_be_iso_calendar_date[2026-09-31]
+FAILED tests/test_extract.py::test_processing_date_must_be_iso_calendar_date[20260914]
+8 failed, 2 passed in 0.05s

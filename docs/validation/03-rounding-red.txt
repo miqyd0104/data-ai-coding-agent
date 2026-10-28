@@ -1,0 +1,162 @@
+.FF.......FFF                                                            [100%]
+=================================== FAILURES ===================================
+_________ test_kc102_rounds_branch_total_once_and_allocates_fx_pennies _________
+
+products = [{'id': 'FW01', 'name': 'Flat White', 'category': 'Coffee', 'aliases': ['flat wht']}, {'id': 'LT01', 'name': 'Latte', ...gory': 'Coffee', 'aliases': ['caffe latte']}, {'id': 'CR01', 'name': 'Croissant', 'category': 'Bakery', 'aliases': []}]
+
+    def test_kc102_rounds_branch_total_once_and_allocates_fx_pennies(products):
+        # 3 x EUR 0.01 / 1.5 = GBP 0.02; per-unit rounding incorrectly gives GBP 0.03.
+        rows = [["2026-09-14T09:00:00", "Latte", "0.01", "1", "T1", f"D{i}"]
+                for i in range(3)]
+        cleaned = clean_rows(rows, "dublin", "1.5", products=products)
+>       assert sum(row["line_total_pence"] for row in cleaned) == 2
+E       assert 3 == 2
+E        +  where 3 = sum(<generator object test_kc102_rounds_branch_total_once_and_allocates_fx_pennies.<locals>.<genexpr> at 0x106f72670>)
+
+tests/test_currency.py:18: AssertionError
+___________________ test_kc102_fx_allocation_handles_refunds ___________________
+
+products = [{'id': 'FW01', 'name': 'Flat White', 'category': 'Coffee', 'aliases': ['flat wht']}, {'id': 'LT01', 'name': 'Latte', ...gory': 'Coffee', 'aliases': ['caffe latte']}, {'id': 'CR01', 'name': 'Croissant', 'category': 'Bakery', 'aliases': []}]
+
+    def test_kc102_fx_allocation_handles_refunds(products):
+        # EUR 0.03 - EUR 0.01 = EUR 0.02; at 1.5 this rounds to GBP 0.01.
+        rows = [["2026-09-14T09:00:00", "Latte", "0.01", str(qty), "T1", f"D{i}"]
+                for i, qty in enumerate([3, -1])]
+        cleaned = clean_rows(rows, "dublin", "1.5", products=products)
+>       assert sum(row["line_total_pence"] for row in cleaned) == 1
+E       assert 2 == 1
+E        +  where 2 = sum(<generator object test_kc102_fx_allocation_handles_refunds.<locals>.<genexpr> at 0x106f73ac0>)
+
+tests/test_currency.py:31: AssertionError
+_____ test_every_branch_matches_finance_z_reports_to_the_penny[2026-09-14] _____
+
+tmp_path = PosixPath('/private/var/folders/35/3vh71s8129qdl0r43y_m_2dh0000gn/T/pytest-of-syedmiqdadhamdani/pytest-16/test_every_branch_matches_fina0')
+date = '2026-09-14'
+
+    @pytest.mark.parametrize("date", ["2026-09-14", "2026-09-15", "2026-09-16"])
+    def test_every_branch_matches_finance_z_reports_to_the_penny(tmp_path, date):
+        with open("data/raw/z_reports.csv", encoding="utf-8") as stream:
+            expected = [row for row in csv.DictReader(stream) if row["date"] == date]
+        rate = Decimal(str(json.loads(
+            Path(f"data/raw/exchange_rates/{date}.json").read_text()
+        )["rates"]["EUR"]))
+        actual = {row["branch"]: row for row in run(date, output_dir=tmp_path)}
+        assert set(actual) == {row["branch"] for row in expected}
+        for row in expected:
+            summary = actual[row["branch"]]
+            revenue = Decimal(row["net_sales"])
+            if row["currency"] == "EUR":
+                revenue = (revenue / rate).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+            assert summary["transactions"] == int(row["transactions"])
+            assert summary["items_sold"] == int(row["items_sold"])
+>           assert summary["revenue_gbp"] == f"{revenue:.2f}"
+E           AssertionError: assert '675.11' == '675.25'
+E             
+E             - 675.25
+E             + 675.11
+
+tests/test_reconciliation.py:44: AssertionError
+----------------------------- Captured stdout call -----------------------------
+Processing leeds...
+  212 rows
+Processing manchester...
+  248 rows
+Processing york...
+  186 rows
+Processing dublin...
+  186 rows
+Processing edinburgh...
+  0 rows
+Rejected 8 invalid rows; see rejected_rows_2026-09-14.csv
+Done! Summary written to /private/var/folders/35/3vh71s8129qdl0r43y_m_2dh0000gn/T/pytest-of-syedmiqdadhamdani/pytest-16/test_every_branch_matches_fina0/daily_summary_2026-09-14.csv
+_____ test_every_branch_matches_finance_z_reports_to_the_penny[2026-09-15] _____
+
+tmp_path = PosixPath('/private/var/folders/35/3vh71s8129qdl0r43y_m_2dh0000gn/T/pytest-of-syedmiqdadhamdani/pytest-16/test_every_branch_matches_fina1')
+date = '2026-09-15'
+
+    @pytest.mark.parametrize("date", ["2026-09-14", "2026-09-15", "2026-09-16"])
+    def test_every_branch_matches_finance_z_reports_to_the_penny(tmp_path, date):
+        with open("data/raw/z_reports.csv", encoding="utf-8") as stream:
+            expected = [row for row in csv.DictReader(stream) if row["date"] == date]
+        rate = Decimal(str(json.loads(
+            Path(f"data/raw/exchange_rates/{date}.json").read_text()
+        )["rates"]["EUR"]))
+        actual = {row["branch"]: row for row in run(date, output_dir=tmp_path)}
+        assert set(actual) == {row["branch"] for row in expected}
+        for row in expected:
+            summary = actual[row["branch"]]
+            revenue = Decimal(row["net_sales"])
+            if row["currency"] == "EUR":
+                revenue = (revenue / rate).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+            assert summary["transactions"] == int(row["transactions"])
+            assert summary["items_sold"] == int(row["items_sold"])
+>           assert summary["revenue_gbp"] == f"{revenue:.2f}"
+E           AssertionError: assert '710.70' == '710.98'
+E             
+E             - 710.98
+E             + 710.70
+
+tests/test_reconciliation.py:44: AssertionError
+----------------------------- Captured stdout call -----------------------------
+Processing leeds...
+  234 rows
+Processing manchester...
+  286 rows
+Processing york...
+  162 rows
+Processing dublin...
+  205 rows
+Processing edinburgh...
+  0 rows
+Rejected 8 invalid rows; see rejected_rows_2026-09-15.csv
+Done! Summary written to /private/var/folders/35/3vh71s8129qdl0r43y_m_2dh0000gn/T/pytest-of-syedmiqdadhamdani/pytest-16/test_every_branch_matches_fina1/daily_summary_2026-09-15.csv
+_____ test_every_branch_matches_finance_z_reports_to_the_penny[2026-09-16] _____
+
+tmp_path = PosixPath('/private/var/folders/35/3vh71s8129qdl0r43y_m_2dh0000gn/T/pytest-of-syedmiqdadhamdani/pytest-16/test_every_branch_matches_fina2')
+date = '2026-09-16'
+
+    @pytest.mark.parametrize("date", ["2026-09-14", "2026-09-15", "2026-09-16"])
+    def test_every_branch_matches_finance_z_reports_to_the_penny(tmp_path, date):
+        with open("data/raw/z_reports.csv", encoding="utf-8") as stream:
+            expected = [row for row in csv.DictReader(stream) if row["date"] == date]
+        rate = Decimal(str(json.loads(
+            Path(f"data/raw/exchange_rates/{date}.json").read_text()
+        )["rates"]["EUR"]))
+        actual = {row["branch"]: row for row in run(date, output_dir=tmp_path)}
+        assert set(actual) == {row["branch"] for row in expected}
+        for row in expected:
+            summary = actual[row["branch"]]
+            revenue = Decimal(row["net_sales"])
+            if row["currency"] == "EUR":
+                revenue = (revenue / rate).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+            assert summary["transactions"] == int(row["transactions"])
+            assert summary["items_sold"] == int(row["items_sold"])
+>           assert summary["revenue_gbp"] == f"{revenue:.2f}"
+E           AssertionError: assert '651.65' == '651.68'
+E             
+E             - 651.68
+E             ?      ^
+E             + 651.65
+E             ?      ^
+
+tests/test_reconciliation.py:44: AssertionError
+----------------------------- Captured stdout call -----------------------------
+Processing leeds...
+  188 rows
+Processing manchester...
+  251 rows
+Processing york...
+  156 rows
+Processing dublin...
+  184 rows
+Processing edinburgh...
+  190 rows
+Rejected 8 invalid rows; see rejected_rows_2026-09-16.csv
+Done! Summary written to /private/var/folders/35/3vh71s8129qdl0r43y_m_2dh0000gn/T/pytest-of-syedmiqdadhamdani/pytest-16/test_every_branch_matches_fina2/daily_summary_2026-09-16.csv
+=========================== short test summary info ============================
+FAILED tests/test_currency.py::test_kc102_rounds_branch_total_once_and_allocates_fx_pennies
+FAILED tests/test_currency.py::test_kc102_fx_allocation_handles_refunds - ass...
+FAILED tests/test_reconciliation.py::test_every_branch_matches_finance_z_reports_to_the_penny[2026-09-14]
+FAILED tests/test_reconciliation.py::test_every_branch_matches_finance_z_reports_to_the_penny[2026-09-15]
+FAILED tests/test_reconciliation.py::test_every_branch_matches_finance_z_reports_to_the_penny[2026-09-16]
+5 failed, 8 passed in 0.07s

@@ -1,0 +1,1415 @@
+.FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF                                 [100%]
+=================================== FAILURES ===================================
+_______________________ test_format_pence[340-\xa33.40] ________________________
+
+pence = 340, expected = '£3.40'
+
+    @pytest.mark.parametrize(
+        "pence, expected",
+        [
+            (340, "£3.40"),
+            (0, "£0.00"),
+            (5, "£0.05"),
+            (1000, "£10.00"),
+            (123456, "£1234.56"),
+            (-120, "-£1.20"),
+        ],
+    )
+    def test_format_pence(pence, expected):
+>       assert format_pence(pence) == expected
+               ^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+pence = 340
+
+    def format_pence(pence):
+        """Format an integer number of pence as a pounds string for reports.
+    
+        >>> format_pence(340)
+        '£3.40'
+        >>> format_pence(-120)
+        '-£1.20'
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:67: NotImplementedError
+________________________ test_format_pence[0-\xa30.00] _________________________
+
+pence = 0, expected = '£0.00'
+
+    @pytest.mark.parametrize(
+        "pence, expected",
+        [
+            (340, "£3.40"),
+            (0, "£0.00"),
+            (5, "£0.05"),
+            (1000, "£10.00"),
+            (123456, "£1234.56"),
+            (-120, "-£1.20"),
+        ],
+    )
+    def test_format_pence(pence, expected):
+>       assert format_pence(pence) == expected
+               ^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+pence = 0
+
+    def format_pence(pence):
+        """Format an integer number of pence as a pounds string for reports.
+    
+        >>> format_pence(340)
+        '£3.40'
+        >>> format_pence(-120)
+        '-£1.20'
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:67: NotImplementedError
+________________________ test_format_pence[5-\xa30.05] _________________________
+
+pence = 5, expected = '£0.05'
+
+    @pytest.mark.parametrize(
+        "pence, expected",
+        [
+            (340, "£3.40"),
+            (0, "£0.00"),
+            (5, "£0.05"),
+            (1000, "£10.00"),
+            (123456, "£1234.56"),
+            (-120, "-£1.20"),
+        ],
+    )
+    def test_format_pence(pence, expected):
+>       assert format_pence(pence) == expected
+               ^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+pence = 5
+
+    def format_pence(pence):
+        """Format an integer number of pence as a pounds string for reports.
+    
+        >>> format_pence(340)
+        '£3.40'
+        >>> format_pence(-120)
+        '-£1.20'
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:67: NotImplementedError
+______________________ test_format_pence[1000-\xa310.00] _______________________
+
+pence = 1000, expected = '£10.00'
+
+    @pytest.mark.parametrize(
+        "pence, expected",
+        [
+            (340, "£3.40"),
+            (0, "£0.00"),
+            (5, "£0.05"),
+            (1000, "£10.00"),
+            (123456, "£1234.56"),
+            (-120, "-£1.20"),
+        ],
+    )
+    def test_format_pence(pence, expected):
+>       assert format_pence(pence) == expected
+               ^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+pence = 1000
+
+    def format_pence(pence):
+        """Format an integer number of pence as a pounds string for reports.
+    
+        >>> format_pence(340)
+        '£3.40'
+        >>> format_pence(-120)
+        '-£1.20'
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:67: NotImplementedError
+____________________ test_format_pence[123456-\xa31234.56] _____________________
+
+pence = 123456, expected = '£1234.56'
+
+    @pytest.mark.parametrize(
+        "pence, expected",
+        [
+            (340, "£3.40"),
+            (0, "£0.00"),
+            (5, "£0.05"),
+            (1000, "£10.00"),
+            (123456, "£1234.56"),
+            (-120, "-£1.20"),
+        ],
+    )
+    def test_format_pence(pence, expected):
+>       assert format_pence(pence) == expected
+               ^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+pence = 123456
+
+    def format_pence(pence):
+        """Format an integer number of pence as a pounds string for reports.
+    
+        >>> format_pence(340)
+        '£3.40'
+        >>> format_pence(-120)
+        '-£1.20'
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:67: NotImplementedError
+______________________ test_format_pence[-120--\xa31.20] _______________________
+
+pence = -120, expected = '-£1.20'
+
+    @pytest.mark.parametrize(
+        "pence, expected",
+        [
+            (340, "£3.40"),
+            (0, "£0.00"),
+            (5, "£0.05"),
+            (1000, "£10.00"),
+            (123456, "£1234.56"),
+            (-120, "-£1.20"),
+        ],
+    )
+    def test_format_pence(pence, expected):
+>       assert format_pence(pence) == expected
+               ^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+pence = -120
+
+    def format_pence(pence):
+        """Format an integer number of pence as a pounds string for reports.
+    
+        >>> format_pence(340)
+        '£3.40'
+        >>> format_pence(-120)
+        '-£1.20'
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:67: NotImplementedError
+__________________ test_parse_price_to_pence[3.40-pounds-340] __________________
+
+value = '3.40', unit = 'pounds', expected = 340
+
+    @pytest.mark.parametrize(
+        "value, unit, expected",
+        [
+            ("3.40", "pounds", 340),
+            ("3.4", "pounds", 340),
+            ("3", "pounds", 300),
+            (" 2.60 ", "pounds", 260),
+            ("4.35", "pounds", 435),
+            ("0.29", "pounds", 29),
+            ("340", "pence", 340),
+            (" 220", "pence", 220),
+        ],
+    )
+    def test_parse_price_to_pence(value, unit, expected):
+>       assert parse_price_to_pence(value, unit) == expected
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:58: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = '3.40', unit = 'pounds'
+
+    def parse_price_to_pence(value, unit):
+        """Turn a till price string into an integer number of pence (or cents).
+    
+        `unit` is "pounds" for tills that export prices like "3.40" and "pence"
+        for tills that export prices like "340". Surrounding whitespace is ignored.
+        Raise ValueError if the value is not a valid price (including fractions
+        of a penny, e.g. "3.405" pounds or "340.5" pence).
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:78: NotImplementedError
+__________________ test_parse_price_to_pence[3.4-pounds-340] ___________________
+
+value = '3.4', unit = 'pounds', expected = 340
+
+    @pytest.mark.parametrize(
+        "value, unit, expected",
+        [
+            ("3.40", "pounds", 340),
+            ("3.4", "pounds", 340),
+            ("3", "pounds", 300),
+            (" 2.60 ", "pounds", 260),
+            ("4.35", "pounds", 435),
+            ("0.29", "pounds", 29),
+            ("340", "pence", 340),
+            (" 220", "pence", 220),
+        ],
+    )
+    def test_parse_price_to_pence(value, unit, expected):
+>       assert parse_price_to_pence(value, unit) == expected
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:58: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = '3.4', unit = 'pounds'
+
+    def parse_price_to_pence(value, unit):
+        """Turn a till price string into an integer number of pence (or cents).
+    
+        `unit` is "pounds" for tills that export prices like "3.40" and "pence"
+        for tills that export prices like "340". Surrounding whitespace is ignored.
+        Raise ValueError if the value is not a valid price (including fractions
+        of a penny, e.g. "3.405" pounds or "340.5" pence).
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:78: NotImplementedError
+___________________ test_parse_price_to_pence[3-pounds-300] ____________________
+
+value = '3', unit = 'pounds', expected = 300
+
+    @pytest.mark.parametrize(
+        "value, unit, expected",
+        [
+            ("3.40", "pounds", 340),
+            ("3.4", "pounds", 340),
+            ("3", "pounds", 300),
+            (" 2.60 ", "pounds", 260),
+            ("4.35", "pounds", 435),
+            ("0.29", "pounds", 29),
+            ("340", "pence", 340),
+            (" 220", "pence", 220),
+        ],
+    )
+    def test_parse_price_to_pence(value, unit, expected):
+>       assert parse_price_to_pence(value, unit) == expected
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:58: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = '3', unit = 'pounds'
+
+    def parse_price_to_pence(value, unit):
+        """Turn a till price string into an integer number of pence (or cents).
+    
+        `unit` is "pounds" for tills that export prices like "3.40" and "pence"
+        for tills that export prices like "340". Surrounding whitespace is ignored.
+        Raise ValueError if the value is not a valid price (including fractions
+        of a penny, e.g. "3.405" pounds or "340.5" pence).
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:78: NotImplementedError
+_________________ test_parse_price_to_pence[ 2.60 -pounds-260] _________________
+
+value = ' 2.60 ', unit = 'pounds', expected = 260
+
+    @pytest.mark.parametrize(
+        "value, unit, expected",
+        [
+            ("3.40", "pounds", 340),
+            ("3.4", "pounds", 340),
+            ("3", "pounds", 300),
+            (" 2.60 ", "pounds", 260),
+            ("4.35", "pounds", 435),
+            ("0.29", "pounds", 29),
+            ("340", "pence", 340),
+            (" 220", "pence", 220),
+        ],
+    )
+    def test_parse_price_to_pence(value, unit, expected):
+>       assert parse_price_to_pence(value, unit) == expected
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:58: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = ' 2.60 ', unit = 'pounds'
+
+    def parse_price_to_pence(value, unit):
+        """Turn a till price string into an integer number of pence (or cents).
+    
+        `unit` is "pounds" for tills that export prices like "3.40" and "pence"
+        for tills that export prices like "340". Surrounding whitespace is ignored.
+        Raise ValueError if the value is not a valid price (including fractions
+        of a penny, e.g. "3.405" pounds or "340.5" pence).
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:78: NotImplementedError
+__________________ test_parse_price_to_pence[4.35-pounds-435] __________________
+
+value = '4.35', unit = 'pounds', expected = 435
+
+    @pytest.mark.parametrize(
+        "value, unit, expected",
+        [
+            ("3.40", "pounds", 340),
+            ("3.4", "pounds", 340),
+            ("3", "pounds", 300),
+            (" 2.60 ", "pounds", 260),
+            ("4.35", "pounds", 435),
+            ("0.29", "pounds", 29),
+            ("340", "pence", 340),
+            (" 220", "pence", 220),
+        ],
+    )
+    def test_parse_price_to_pence(value, unit, expected):
+>       assert parse_price_to_pence(value, unit) == expected
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:58: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = '4.35', unit = 'pounds'
+
+    def parse_price_to_pence(value, unit):
+        """Turn a till price string into an integer number of pence (or cents).
+    
+        `unit` is "pounds" for tills that export prices like "3.40" and "pence"
+        for tills that export prices like "340". Surrounding whitespace is ignored.
+        Raise ValueError if the value is not a valid price (including fractions
+        of a penny, e.g. "3.405" pounds or "340.5" pence).
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:78: NotImplementedError
+__________________ test_parse_price_to_pence[0.29-pounds-29] ___________________
+
+value = '0.29', unit = 'pounds', expected = 29
+
+    @pytest.mark.parametrize(
+        "value, unit, expected",
+        [
+            ("3.40", "pounds", 340),
+            ("3.4", "pounds", 340),
+            ("3", "pounds", 300),
+            (" 2.60 ", "pounds", 260),
+            ("4.35", "pounds", 435),
+            ("0.29", "pounds", 29),
+            ("340", "pence", 340),
+            (" 220", "pence", 220),
+        ],
+    )
+    def test_parse_price_to_pence(value, unit, expected):
+>       assert parse_price_to_pence(value, unit) == expected
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:58: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = '0.29', unit = 'pounds'
+
+    def parse_price_to_pence(value, unit):
+        """Turn a till price string into an integer number of pence (or cents).
+    
+        `unit` is "pounds" for tills that export prices like "3.40" and "pence"
+        for tills that export prices like "340". Surrounding whitespace is ignored.
+        Raise ValueError if the value is not a valid price (including fractions
+        of a penny, e.g. "3.405" pounds or "340.5" pence).
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:78: NotImplementedError
+___________________ test_parse_price_to_pence[340-pence-340] ___________________
+
+value = '340', unit = 'pence', expected = 340
+
+    @pytest.mark.parametrize(
+        "value, unit, expected",
+        [
+            ("3.40", "pounds", 340),
+            ("3.4", "pounds", 340),
+            ("3", "pounds", 300),
+            (" 2.60 ", "pounds", 260),
+            ("4.35", "pounds", 435),
+            ("0.29", "pounds", 29),
+            ("340", "pence", 340),
+            (" 220", "pence", 220),
+        ],
+    )
+    def test_parse_price_to_pence(value, unit, expected):
+>       assert parse_price_to_pence(value, unit) == expected
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:58: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = '340', unit = 'pence'
+
+    def parse_price_to_pence(value, unit):
+        """Turn a till price string into an integer number of pence (or cents).
+    
+        `unit` is "pounds" for tills that export prices like "3.40" and "pence"
+        for tills that export prices like "340". Surrounding whitespace is ignored.
+        Raise ValueError if the value is not a valid price (including fractions
+        of a penny, e.g. "3.405" pounds or "340.5" pence).
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:78: NotImplementedError
+__________________ test_parse_price_to_pence[ 220-pence-220] ___________________
+
+value = ' 220', unit = 'pence', expected = 220
+
+    @pytest.mark.parametrize(
+        "value, unit, expected",
+        [
+            ("3.40", "pounds", 340),
+            ("3.4", "pounds", 340),
+            ("3", "pounds", 300),
+            (" 2.60 ", "pounds", 260),
+            ("4.35", "pounds", 435),
+            ("0.29", "pounds", 29),
+            ("340", "pence", 340),
+            (" 220", "pence", 220),
+        ],
+    )
+    def test_parse_price_to_pence(value, unit, expected):
+>       assert parse_price_to_pence(value, unit) == expected
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:58: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = ' 220', unit = 'pence'
+
+    def parse_price_to_pence(value, unit):
+        """Turn a till price string into an integer number of pence (or cents).
+    
+        `unit` is "pounds" for tills that export prices like "3.40" and "pence"
+        for tills that export prices like "340". Surrounding whitespace is ignored.
+        Raise ValueError if the value is not a valid price (including fractions
+        of a penny, e.g. "3.405" pounds or "340.5" pence).
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:78: NotImplementedError
+___________ test_parse_price_to_pence_rejects_bad_values[N/A-pounds] ___________
+
+value = 'N/A', unit = 'pounds'
+
+    @pytest.mark.parametrize(
+        "value, unit",
+        [
+            ("N/A", "pounds"),
+            ("", "pounds"),
+            ("3.405", "pounds"),
+            ("340.5", "pence"),
+            ("abc", "pence"),
+        ],
+    )
+    def test_parse_price_to_pence_rejects_bad_values(value, unit):
+        with pytest.raises(ValueError):
+>           parse_price_to_pence(value, unit)
+
+tests/test_transform.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = 'N/A', unit = 'pounds'
+
+    def parse_price_to_pence(value, unit):
+        """Turn a till price string into an integer number of pence (or cents).
+    
+        `unit` is "pounds" for tills that export prices like "3.40" and "pence"
+        for tills that export prices like "340". Surrounding whitespace is ignored.
+        Raise ValueError if the value is not a valid price (including fractions
+        of a penny, e.g. "3.405" pounds or "340.5" pence).
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:78: NotImplementedError
+____________ test_parse_price_to_pence_rejects_bad_values[-pounds] _____________
+
+value = '', unit = 'pounds'
+
+    @pytest.mark.parametrize(
+        "value, unit",
+        [
+            ("N/A", "pounds"),
+            ("", "pounds"),
+            ("3.405", "pounds"),
+            ("340.5", "pence"),
+            ("abc", "pence"),
+        ],
+    )
+    def test_parse_price_to_pence_rejects_bad_values(value, unit):
+        with pytest.raises(ValueError):
+>           parse_price_to_pence(value, unit)
+
+tests/test_transform.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = '', unit = 'pounds'
+
+    def parse_price_to_pence(value, unit):
+        """Turn a till price string into an integer number of pence (or cents).
+    
+        `unit` is "pounds" for tills that export prices like "3.40" and "pence"
+        for tills that export prices like "340". Surrounding whitespace is ignored.
+        Raise ValueError if the value is not a valid price (including fractions
+        of a penny, e.g. "3.405" pounds or "340.5" pence).
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:78: NotImplementedError
+__________ test_parse_price_to_pence_rejects_bad_values[3.405-pounds] __________
+
+value = '3.405', unit = 'pounds'
+
+    @pytest.mark.parametrize(
+        "value, unit",
+        [
+            ("N/A", "pounds"),
+            ("", "pounds"),
+            ("3.405", "pounds"),
+            ("340.5", "pence"),
+            ("abc", "pence"),
+        ],
+    )
+    def test_parse_price_to_pence_rejects_bad_values(value, unit):
+        with pytest.raises(ValueError):
+>           parse_price_to_pence(value, unit)
+
+tests/test_transform.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = '3.405', unit = 'pounds'
+
+    def parse_price_to_pence(value, unit):
+        """Turn a till price string into an integer number of pence (or cents).
+    
+        `unit` is "pounds" for tills that export prices like "3.40" and "pence"
+        for tills that export prices like "340". Surrounding whitespace is ignored.
+        Raise ValueError if the value is not a valid price (including fractions
+        of a penny, e.g. "3.405" pounds or "340.5" pence).
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:78: NotImplementedError
+__________ test_parse_price_to_pence_rejects_bad_values[340.5-pence] ___________
+
+value = '340.5', unit = 'pence'
+
+    @pytest.mark.parametrize(
+        "value, unit",
+        [
+            ("N/A", "pounds"),
+            ("", "pounds"),
+            ("3.405", "pounds"),
+            ("340.5", "pence"),
+            ("abc", "pence"),
+        ],
+    )
+    def test_parse_price_to_pence_rejects_bad_values(value, unit):
+        with pytest.raises(ValueError):
+>           parse_price_to_pence(value, unit)
+
+tests/test_transform.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = '340.5', unit = 'pence'
+
+    def parse_price_to_pence(value, unit):
+        """Turn a till price string into an integer number of pence (or cents).
+    
+        `unit` is "pounds" for tills that export prices like "3.40" and "pence"
+        for tills that export prices like "340". Surrounding whitespace is ignored.
+        Raise ValueError if the value is not a valid price (including fractions
+        of a penny, e.g. "3.405" pounds or "340.5" pence).
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:78: NotImplementedError
+___________ test_parse_price_to_pence_rejects_bad_values[abc-pence] ____________
+
+value = 'abc', unit = 'pence'
+
+    @pytest.mark.parametrize(
+        "value, unit",
+        [
+            ("N/A", "pounds"),
+            ("", "pounds"),
+            ("3.405", "pounds"),
+            ("340.5", "pence"),
+            ("abc", "pence"),
+        ],
+    )
+    def test_parse_price_to_pence_rejects_bad_values(value, unit):
+        with pytest.raises(ValueError):
+>           parse_price_to_pence(value, unit)
+
+tests/test_transform.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = 'abc', unit = 'pence'
+
+    def parse_price_to_pence(value, unit):
+        """Turn a till price string into an integer number of pence (or cents).
+    
+        `unit` is "pounds" for tills that export prices like "3.40" and "pence"
+        for tills that export prices like "340". Surrounding whitespace is ignored.
+        Raise ValueError if the value is not a valid price (including fractions
+        of a penny, e.g. "3.405" pounds or "340.5" pence).
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:78: NotImplementedError
+____________ test_parse_till_timestamp[14/09/2026 08:15-expected0] _____________
+
+value = '14/09/2026 08:15', expected = datetime.datetime(2026, 9, 14, 8, 15)
+
+    @pytest.mark.parametrize(
+        "value, expected",
+        [
+            ("14/09/2026 08:15", datetime(2026, 9, 14, 8, 15)),
+            ("01/02/2026 09:00", datetime(2026, 2, 1, 9, 0)),  # 1st Feb, not 2nd Jan
+            ("2026-09-14T08:15:00", datetime(2026, 9, 14, 8, 15)),
+            ("  2026-09-14T17:59:00 ", datetime(2026, 9, 14, 17, 59)),
+        ],
+    )
+    def test_parse_till_timestamp(value, expected):
+>       assert parse_till_timestamp(value) == expected
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:89: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = '14/09/2026 08:15'
+
+    def parse_till_timestamp(value):
+        """Parse a till timestamp into a datetime.
+    
+        Accepts the UK format "14/09/2026 08:15" (day first!) and ISO 8601
+        ("2026-09-14T08:15:00"). Surrounding whitespace is ignored.
+        Raise ValueError for anything else.
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:88: NotImplementedError
+____________ test_parse_till_timestamp[01/02/2026 09:00-expected1] _____________
+
+value = '01/02/2026 09:00', expected = datetime.datetime(2026, 2, 1, 9, 0)
+
+    @pytest.mark.parametrize(
+        "value, expected",
+        [
+            ("14/09/2026 08:15", datetime(2026, 9, 14, 8, 15)),
+            ("01/02/2026 09:00", datetime(2026, 2, 1, 9, 0)),  # 1st Feb, not 2nd Jan
+            ("2026-09-14T08:15:00", datetime(2026, 9, 14, 8, 15)),
+            ("  2026-09-14T17:59:00 ", datetime(2026, 9, 14, 17, 59)),
+        ],
+    )
+    def test_parse_till_timestamp(value, expected):
+>       assert parse_till_timestamp(value) == expected
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:89: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = '01/02/2026 09:00'
+
+    def parse_till_timestamp(value):
+        """Parse a till timestamp into a datetime.
+    
+        Accepts the UK format "14/09/2026 08:15" (day first!) and ISO 8601
+        ("2026-09-14T08:15:00"). Surrounding whitespace is ignored.
+        Raise ValueError for anything else.
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:88: NotImplementedError
+___________ test_parse_till_timestamp[2026-09-14T08:15:00-expected2] ___________
+
+value = '2026-09-14T08:15:00', expected = datetime.datetime(2026, 9, 14, 8, 15)
+
+    @pytest.mark.parametrize(
+        "value, expected",
+        [
+            ("14/09/2026 08:15", datetime(2026, 9, 14, 8, 15)),
+            ("01/02/2026 09:00", datetime(2026, 2, 1, 9, 0)),  # 1st Feb, not 2nd Jan
+            ("2026-09-14T08:15:00", datetime(2026, 9, 14, 8, 15)),
+            ("  2026-09-14T17:59:00 ", datetime(2026, 9, 14, 17, 59)),
+        ],
+    )
+    def test_parse_till_timestamp(value, expected):
+>       assert parse_till_timestamp(value) == expected
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:89: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = '2026-09-14T08:15:00'
+
+    def parse_till_timestamp(value):
+        """Parse a till timestamp into a datetime.
+    
+        Accepts the UK format "14/09/2026 08:15" (day first!) and ISO 8601
+        ("2026-09-14T08:15:00"). Surrounding whitespace is ignored.
+        Raise ValueError for anything else.
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:88: NotImplementedError
+_________ test_parse_till_timestamp[  2026-09-14T17:59:00 -expected3] __________
+
+value = '  2026-09-14T17:59:00 '
+expected = datetime.datetime(2026, 9, 14, 17, 59)
+
+    @pytest.mark.parametrize(
+        "value, expected",
+        [
+            ("14/09/2026 08:15", datetime(2026, 9, 14, 8, 15)),
+            ("01/02/2026 09:00", datetime(2026, 2, 1, 9, 0)),  # 1st Feb, not 2nd Jan
+            ("2026-09-14T08:15:00", datetime(2026, 9, 14, 8, 15)),
+            ("  2026-09-14T17:59:00 ", datetime(2026, 9, 14, 17, 59)),
+        ],
+    )
+    def test_parse_till_timestamp(value, expected):
+>       assert parse_till_timestamp(value) == expected
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:89: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = '  2026-09-14T17:59:00 '
+
+    def parse_till_timestamp(value):
+        """Parse a till timestamp into a datetime.
+    
+        Accepts the UK format "14/09/2026 08:15" (day first!) and ISO 8601
+        ("2026-09-14T08:15:00"). Surrounding whitespace is ignored.
+        Raise ValueError for anything else.
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:88: NotImplementedError
+________________ test_parse_till_timestamp_rejects_bad_values[] ________________
+
+value = ''
+
+    @pytest.mark.parametrize("value", ["", "yesterday", "14/09/2026", "2026-13-01T00:00:00"])
+    def test_parse_till_timestamp_rejects_bad_values(value):
+        with pytest.raises(ValueError):
+>           parse_till_timestamp(value)
+
+tests/test_transform.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = ''
+
+    def parse_till_timestamp(value):
+        """Parse a till timestamp into a datetime.
+    
+        Accepts the UK format "14/09/2026 08:15" (day first!) and ISO 8601
+        ("2026-09-14T08:15:00"). Surrounding whitespace is ignored.
+        Raise ValueError for anything else.
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:88: NotImplementedError
+___________ test_parse_till_timestamp_rejects_bad_values[yesterday] ____________
+
+value = 'yesterday'
+
+    @pytest.mark.parametrize("value", ["", "yesterday", "14/09/2026", "2026-13-01T00:00:00"])
+    def test_parse_till_timestamp_rejects_bad_values(value):
+        with pytest.raises(ValueError):
+>           parse_till_timestamp(value)
+
+tests/test_transform.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = 'yesterday'
+
+    def parse_till_timestamp(value):
+        """Parse a till timestamp into a datetime.
+    
+        Accepts the UK format "14/09/2026 08:15" (day first!) and ISO 8601
+        ("2026-09-14T08:15:00"). Surrounding whitespace is ignored.
+        Raise ValueError for anything else.
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:88: NotImplementedError
+___________ test_parse_till_timestamp_rejects_bad_values[14/09/2026] ___________
+
+value = '14/09/2026'
+
+    @pytest.mark.parametrize("value", ["", "yesterday", "14/09/2026", "2026-13-01T00:00:00"])
+    def test_parse_till_timestamp_rejects_bad_values(value):
+        with pytest.raises(ValueError):
+>           parse_till_timestamp(value)
+
+tests/test_transform.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = '14/09/2026'
+
+    def parse_till_timestamp(value):
+        """Parse a till timestamp into a datetime.
+    
+        Accepts the UK format "14/09/2026 08:15" (day first!) and ISO 8601
+        ("2026-09-14T08:15:00"). Surrounding whitespace is ignored.
+        Raise ValueError for anything else.
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:88: NotImplementedError
+______ test_parse_till_timestamp_rejects_bad_values[2026-13-01T00:00:00] _______
+
+value = '2026-13-01T00:00:00'
+
+    @pytest.mark.parametrize("value", ["", "yesterday", "14/09/2026", "2026-13-01T00:00:00"])
+    def test_parse_till_timestamp_rejects_bad_values(value):
+        with pytest.raises(ValueError):
+>           parse_till_timestamp(value)
+
+tests/test_transform.py:95: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+value = '2026-13-01T00:00:00'
+
+    def parse_till_timestamp(value):
+        """Parse a till timestamp into a datetime.
+    
+        Accepts the UK format "14/09/2026 08:15" (day first!) and ISO 8601
+        ("2026-09-14T08:15:00"). Surrounding whitespace is ignored.
+        Raise ValueError for anything else.
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:88: NotImplementedError
+______________ test_normalise_product_name[Flat White-Flat White] ______________
+
+raw = 'Flat White', expected = 'Flat White'
+
+    @pytest.mark.parametrize(
+        "raw, expected",
+        [
+            ("Flat White", "Flat White"),
+            ("FLAT WHITE", "Flat White"),
+            ("flat-white", "Flat White"),
+            (" Flat White ", "Flat White"),
+            ("pain-au-chocolat", "Pain au Chocolat"),
+            ("Pain Au Choc", "Pain au Chocolat"),
+            ("Tea", "Breakfast Tea"),
+            ("hot choc", "Hot Chocolate"),
+        ],
+    )
+    def test_normalise_product_name(raw, expected):
+>       assert normalise_product_name(raw, PRODUCTS) == expected
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+raw_name = 'Flat White'
+products = [{'id': 'FW01', 'name': 'Flat White', 'category': 'Coffee', 'price_pence': 340, ...}, {'id': 'LT01', 'name': 'Latte', ...e', 'price_pence': 240, ...}, {'id': 'TE01', 'name': 'Breakfast Tea', 'category': 'Tea', 'price_pence': 220, ...}, ...]
+
+    def normalise_product_name(raw_name, products):
+        """Match a messy till product name to its canonical catalogue name.
+    
+        `products` is the list loaded from data/reference/products.json. Matching
+        ignores case, surrounding whitespace and hyphens-vs-spaces, and also
+        checks each product's aliases. Return None if there is no match.
+    
+        >>> normalise_product_name(" flat-white ", products)
+        'Flat White'
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:101: NotImplementedError
+______________ test_normalise_product_name[FLAT WHITE-Flat White] ______________
+
+raw = 'FLAT WHITE', expected = 'Flat White'
+
+    @pytest.mark.parametrize(
+        "raw, expected",
+        [
+            ("Flat White", "Flat White"),
+            ("FLAT WHITE", "Flat White"),
+            ("flat-white", "Flat White"),
+            (" Flat White ", "Flat White"),
+            ("pain-au-chocolat", "Pain au Chocolat"),
+            ("Pain Au Choc", "Pain au Chocolat"),
+            ("Tea", "Breakfast Tea"),
+            ("hot choc", "Hot Chocolate"),
+        ],
+    )
+    def test_normalise_product_name(raw, expected):
+>       assert normalise_product_name(raw, PRODUCTS) == expected
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+raw_name = 'FLAT WHITE'
+products = [{'id': 'FW01', 'name': 'Flat White', 'category': 'Coffee', 'price_pence': 340, ...}, {'id': 'LT01', 'name': 'Latte', ...e', 'price_pence': 240, ...}, {'id': 'TE01', 'name': 'Breakfast Tea', 'category': 'Tea', 'price_pence': 220, ...}, ...]
+
+    def normalise_product_name(raw_name, products):
+        """Match a messy till product name to its canonical catalogue name.
+    
+        `products` is the list loaded from data/reference/products.json. Matching
+        ignores case, surrounding whitespace and hyphens-vs-spaces, and also
+        checks each product's aliases. Return None if there is no match.
+    
+        >>> normalise_product_name(" flat-white ", products)
+        'Flat White'
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:101: NotImplementedError
+______________ test_normalise_product_name[flat-white-Flat White] ______________
+
+raw = 'flat-white', expected = 'Flat White'
+
+    @pytest.mark.parametrize(
+        "raw, expected",
+        [
+            ("Flat White", "Flat White"),
+            ("FLAT WHITE", "Flat White"),
+            ("flat-white", "Flat White"),
+            (" Flat White ", "Flat White"),
+            ("pain-au-chocolat", "Pain au Chocolat"),
+            ("Pain Au Choc", "Pain au Chocolat"),
+            ("Tea", "Breakfast Tea"),
+            ("hot choc", "Hot Chocolate"),
+        ],
+    )
+    def test_normalise_product_name(raw, expected):
+>       assert normalise_product_name(raw, PRODUCTS) == expected
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+raw_name = 'flat-white'
+products = [{'id': 'FW01', 'name': 'Flat White', 'category': 'Coffee', 'price_pence': 340, ...}, {'id': 'LT01', 'name': 'Latte', ...e', 'price_pence': 240, ...}, {'id': 'TE01', 'name': 'Breakfast Tea', 'category': 'Tea', 'price_pence': 220, ...}, ...]
+
+    def normalise_product_name(raw_name, products):
+        """Match a messy till product name to its canonical catalogue name.
+    
+        `products` is the list loaded from data/reference/products.json. Matching
+        ignores case, surrounding whitespace and hyphens-vs-spaces, and also
+        checks each product's aliases. Return None if there is no match.
+    
+        >>> normalise_product_name(" flat-white ", products)
+        'Flat White'
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:101: NotImplementedError
+_____________ test_normalise_product_name[ Flat White -Flat White] _____________
+
+raw = ' Flat White ', expected = 'Flat White'
+
+    @pytest.mark.parametrize(
+        "raw, expected",
+        [
+            ("Flat White", "Flat White"),
+            ("FLAT WHITE", "Flat White"),
+            ("flat-white", "Flat White"),
+            (" Flat White ", "Flat White"),
+            ("pain-au-chocolat", "Pain au Chocolat"),
+            ("Pain Au Choc", "Pain au Chocolat"),
+            ("Tea", "Breakfast Tea"),
+            ("hot choc", "Hot Chocolate"),
+        ],
+    )
+    def test_normalise_product_name(raw, expected):
+>       assert normalise_product_name(raw, PRODUCTS) == expected
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+raw_name = ' Flat White '
+products = [{'id': 'FW01', 'name': 'Flat White', 'category': 'Coffee', 'price_pence': 340, ...}, {'id': 'LT01', 'name': 'Latte', ...e', 'price_pence': 240, ...}, {'id': 'TE01', 'name': 'Breakfast Tea', 'category': 'Tea', 'price_pence': 220, ...}, ...]
+
+    def normalise_product_name(raw_name, products):
+        """Match a messy till product name to its canonical catalogue name.
+    
+        `products` is the list loaded from data/reference/products.json. Matching
+        ignores case, surrounding whitespace and hyphens-vs-spaces, and also
+        checks each product's aliases. Return None if there is no match.
+    
+        >>> normalise_product_name(" flat-white ", products)
+        'Flat White'
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:101: NotImplementedError
+________ test_normalise_product_name[pain-au-chocolat-Pain au Chocolat] ________
+
+raw = 'pain-au-chocolat', expected = 'Pain au Chocolat'
+
+    @pytest.mark.parametrize(
+        "raw, expected",
+        [
+            ("Flat White", "Flat White"),
+            ("FLAT WHITE", "Flat White"),
+            ("flat-white", "Flat White"),
+            (" Flat White ", "Flat White"),
+            ("pain-au-chocolat", "Pain au Chocolat"),
+            ("Pain Au Choc", "Pain au Chocolat"),
+            ("Tea", "Breakfast Tea"),
+            ("hot choc", "Hot Chocolate"),
+        ],
+    )
+    def test_normalise_product_name(raw, expected):
+>       assert normalise_product_name(raw, PRODUCTS) == expected
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+raw_name = 'pain-au-chocolat'
+products = [{'id': 'FW01', 'name': 'Flat White', 'category': 'Coffee', 'price_pence': 340, ...}, {'id': 'LT01', 'name': 'Latte', ...e', 'price_pence': 240, ...}, {'id': 'TE01', 'name': 'Breakfast Tea', 'category': 'Tea', 'price_pence': 220, ...}, ...]
+
+    def normalise_product_name(raw_name, products):
+        """Match a messy till product name to its canonical catalogue name.
+    
+        `products` is the list loaded from data/reference/products.json. Matching
+        ignores case, surrounding whitespace and hyphens-vs-spaces, and also
+        checks each product's aliases. Return None if there is no match.
+    
+        >>> normalise_product_name(" flat-white ", products)
+        'Flat White'
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:101: NotImplementedError
+__________ test_normalise_product_name[Pain Au Choc-Pain au Chocolat] __________
+
+raw = 'Pain Au Choc', expected = 'Pain au Chocolat'
+
+    @pytest.mark.parametrize(
+        "raw, expected",
+        [
+            ("Flat White", "Flat White"),
+            ("FLAT WHITE", "Flat White"),
+            ("flat-white", "Flat White"),
+            (" Flat White ", "Flat White"),
+            ("pain-au-chocolat", "Pain au Chocolat"),
+            ("Pain Au Choc", "Pain au Chocolat"),
+            ("Tea", "Breakfast Tea"),
+            ("hot choc", "Hot Chocolate"),
+        ],
+    )
+    def test_normalise_product_name(raw, expected):
+>       assert normalise_product_name(raw, PRODUCTS) == expected
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+raw_name = 'Pain Au Choc'
+products = [{'id': 'FW01', 'name': 'Flat White', 'category': 'Coffee', 'price_pence': 340, ...}, {'id': 'LT01', 'name': 'Latte', ...e', 'price_pence': 240, ...}, {'id': 'TE01', 'name': 'Breakfast Tea', 'category': 'Tea', 'price_pence': 220, ...}, ...]
+
+    def normalise_product_name(raw_name, products):
+        """Match a messy till product name to its canonical catalogue name.
+    
+        `products` is the list loaded from data/reference/products.json. Matching
+        ignores case, surrounding whitespace and hyphens-vs-spaces, and also
+        checks each product's aliases. Return None if there is no match.
+    
+        >>> normalise_product_name(" flat-white ", products)
+        'Flat White'
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:101: NotImplementedError
+________________ test_normalise_product_name[Tea-Breakfast Tea] ________________
+
+raw = 'Tea', expected = 'Breakfast Tea'
+
+    @pytest.mark.parametrize(
+        "raw, expected",
+        [
+            ("Flat White", "Flat White"),
+            ("FLAT WHITE", "Flat White"),
+            ("flat-white", "Flat White"),
+            (" Flat White ", "Flat White"),
+            ("pain-au-chocolat", "Pain au Chocolat"),
+            ("Pain Au Choc", "Pain au Chocolat"),
+            ("Tea", "Breakfast Tea"),
+            ("hot choc", "Hot Chocolate"),
+        ],
+    )
+    def test_normalise_product_name(raw, expected):
+>       assert normalise_product_name(raw, PRODUCTS) == expected
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+raw_name = 'Tea'
+products = [{'id': 'FW01', 'name': 'Flat White', 'category': 'Coffee', 'price_pence': 340, ...}, {'id': 'LT01', 'name': 'Latte', ...e', 'price_pence': 240, ...}, {'id': 'TE01', 'name': 'Breakfast Tea', 'category': 'Tea', 'price_pence': 220, ...}, ...]
+
+    def normalise_product_name(raw_name, products):
+        """Match a messy till product name to its canonical catalogue name.
+    
+        `products` is the list loaded from data/reference/products.json. Matching
+        ignores case, surrounding whitespace and hyphens-vs-spaces, and also
+        checks each product's aliases. Return None if there is no match.
+    
+        >>> normalise_product_name(" flat-white ", products)
+        'Flat White'
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:101: NotImplementedError
+_____________ test_normalise_product_name[hot choc-Hot Chocolate] ______________
+
+raw = 'hot choc', expected = 'Hot Chocolate'
+
+    @pytest.mark.parametrize(
+        "raw, expected",
+        [
+            ("Flat White", "Flat White"),
+            ("FLAT WHITE", "Flat White"),
+            ("flat-white", "Flat White"),
+            (" Flat White ", "Flat White"),
+            ("pain-au-chocolat", "Pain au Chocolat"),
+            ("Pain Au Choc", "Pain au Chocolat"),
+            ("Tea", "Breakfast Tea"),
+            ("hot choc", "Hot Chocolate"),
+        ],
+    )
+    def test_normalise_product_name(raw, expected):
+>       assert normalise_product_name(raw, PRODUCTS) == expected
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+raw_name = 'hot choc'
+products = [{'id': 'FW01', 'name': 'Flat White', 'category': 'Coffee', 'price_pence': 340, ...}, {'id': 'LT01', 'name': 'Latte', ...e', 'price_pence': 240, ...}, {'id': 'TE01', 'name': 'Breakfast Tea', 'category': 'Tea', 'price_pence': 220, ...}, ...]
+
+    def normalise_product_name(raw_name, products):
+        """Match a messy till product name to its canonical catalogue name.
+    
+        `products` is the list loaded from data/reference/products.json. Matching
+        ignores case, surrounding whitespace and hyphens-vs-spaces, and also
+        checks each product's aliases. Return None if there is no match.
+    
+        >>> normalise_product_name(" flat-white ", products)
+        'Flat White'
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:101: NotImplementedError
+____________________ test_normalise_product_name_unknown[] _____________________
+
+raw = ''
+
+    @pytest.mark.parametrize("raw", ["", "   ", "Mocha", "Flat"])
+    def test_normalise_product_name_unknown(raw):
+>       assert normalise_product_name(raw, PRODUCTS) is None
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+raw_name = ''
+products = [{'id': 'FW01', 'name': 'Flat White', 'category': 'Coffee', 'price_pence': 340, ...}, {'id': 'LT01', 'name': 'Latte', ...e', 'price_pence': 240, ...}, {'id': 'TE01', 'name': 'Breakfast Tea', 'category': 'Tea', 'price_pence': 220, ...}, ...]
+
+    def normalise_product_name(raw_name, products):
+        """Match a messy till product name to its canonical catalogue name.
+    
+        `products` is the list loaded from data/reference/products.json. Matching
+        ignores case, surrounding whitespace and hyphens-vs-spaces, and also
+        checks each product's aliases. Return None if there is no match.
+    
+        >>> normalise_product_name(" flat-white ", products)
+        'Flat White'
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:101: NotImplementedError
+___________________ test_normalise_product_name_unknown[   ] ___________________
+
+raw = '   '
+
+    @pytest.mark.parametrize("raw", ["", "   ", "Mocha", "Flat"])
+    def test_normalise_product_name_unknown(raw):
+>       assert normalise_product_name(raw, PRODUCTS) is None
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+raw_name = '   '
+products = [{'id': 'FW01', 'name': 'Flat White', 'category': 'Coffee', 'price_pence': 340, ...}, {'id': 'LT01', 'name': 'Latte', ...e', 'price_pence': 240, ...}, {'id': 'TE01', 'name': 'Breakfast Tea', 'category': 'Tea', 'price_pence': 220, ...}, ...]
+
+    def normalise_product_name(raw_name, products):
+        """Match a messy till product name to its canonical catalogue name.
+    
+        `products` is the list loaded from data/reference/products.json. Matching
+        ignores case, surrounding whitespace and hyphens-vs-spaces, and also
+        checks each product's aliases. Return None if there is no match.
+    
+        >>> normalise_product_name(" flat-white ", products)
+        'Flat White'
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:101: NotImplementedError
+__________________ test_normalise_product_name_unknown[Mocha] __________________
+
+raw = 'Mocha'
+
+    @pytest.mark.parametrize("raw", ["", "   ", "Mocha", "Flat"])
+    def test_normalise_product_name_unknown(raw):
+>       assert normalise_product_name(raw, PRODUCTS) is None
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+raw_name = 'Mocha'
+products = [{'id': 'FW01', 'name': 'Flat White', 'category': 'Coffee', 'price_pence': 340, ...}, {'id': 'LT01', 'name': 'Latte', ...e', 'price_pence': 240, ...}, {'id': 'TE01', 'name': 'Breakfast Tea', 'category': 'Tea', 'price_pence': 220, ...}, ...]
+
+    def normalise_product_name(raw_name, products):
+        """Match a messy till product name to its canonical catalogue name.
+    
+        `products` is the list loaded from data/reference/products.json. Matching
+        ignores case, surrounding whitespace and hyphens-vs-spaces, and also
+        checks each product's aliases. Return None if there is no match.
+    
+        >>> normalise_product_name(" flat-white ", products)
+        'Flat White'
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:101: NotImplementedError
+__________________ test_normalise_product_name_unknown[Flat] ___________________
+
+raw = 'Flat'
+
+    @pytest.mark.parametrize("raw", ["", "   ", "Mocha", "Flat"])
+    def test_normalise_product_name_unknown(raw):
+>       assert normalise_product_name(raw, PRODUCTS) is None
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_transform.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+raw_name = 'Flat'
+products = [{'id': 'FW01', 'name': 'Flat White', 'category': 'Coffee', 'price_pence': 340, ...}, {'id': 'LT01', 'name': 'Latte', ...e', 'price_pence': 240, ...}, {'id': 'TE01', 'name': 'Breakfast Tea', 'category': 'Tea', 'price_pence': 220, ...}, ...]
+
+    def normalise_product_name(raw_name, products):
+        """Match a messy till product name to its canonical catalogue name.
+    
+        `products` is the list loaded from data/reference/products.json. Matching
+        ignores case, surrounding whitespace and hyphens-vs-spaces, and also
+        checks each product's aliases. Return None if there is no match.
+    
+        >>> normalise_product_name(" flat-white ", products)
+        'Flat White'
+        """
+>       raise NotImplementedError
+E       NotImplementedError
+
+kettle/transform.py:101: NotImplementedError
+=========================== short test summary info ============================
+FAILED tests/test_transform.py::test_format_pence[340-\xa33.40] - NotImplemen...
+FAILED tests/test_transform.py::test_format_pence[0-\xa30.00] - NotImplemente...
+FAILED tests/test_transform.py::test_format_pence[5-\xa30.05] - NotImplemente...
+FAILED tests/test_transform.py::test_format_pence[1000-\xa310.00] - NotImplem...
+FAILED tests/test_transform.py::test_format_pence[123456-\xa31234.56] - NotIm...
+FAILED tests/test_transform.py::test_format_pence[-120--\xa31.20] - NotImplem...
+FAILED tests/test_transform.py::test_parse_price_to_pence[3.40-pounds-340] - ...
+FAILED tests/test_transform.py::test_parse_price_to_pence[3.4-pounds-340] - N...
+FAILED tests/test_transform.py::test_parse_price_to_pence[3-pounds-300] - Not...
+FAILED tests/test_transform.py::test_parse_price_to_pence[ 2.60 -pounds-260]
+FAILED tests/test_transform.py::test_parse_price_to_pence[4.35-pounds-435] - ...
+FAILED tests/test_transform.py::test_parse_price_to_pence[0.29-pounds-29] - N...
+FAILED tests/test_transform.py::test_parse_price_to_pence[340-pence-340] - No...
+FAILED tests/test_transform.py::test_parse_price_to_pence[ 220-pence-220] - N...
+FAILED tests/test_transform.py::test_parse_price_to_pence_rejects_bad_values[N/A-pounds]
+FAILED tests/test_transform.py::test_parse_price_to_pence_rejects_bad_values[-pounds]
+FAILED tests/test_transform.py::test_parse_price_to_pence_rejects_bad_values[3.405-pounds]
+FAILED tests/test_transform.py::test_parse_price_to_pence_rejects_bad_values[340.5-pence]
+FAILED tests/test_transform.py::test_parse_price_to_pence_rejects_bad_values[abc-pence]
+FAILED tests/test_transform.py::test_parse_till_timestamp[14/09/2026 08:15-expected0]
+FAILED tests/test_transform.py::test_parse_till_timestamp[01/02/2026 09:00-expected1]
+FAILED tests/test_transform.py::test_parse_till_timestamp[2026-09-14T08:15:00-expected2]
+FAILED tests/test_transform.py::test_parse_till_timestamp[  2026-09-14T17:59:00 -expected3]
+FAILED tests/test_transform.py::test_parse_till_timestamp_rejects_bad_values[]
+FAILED tests/test_transform.py::test_parse_till_timestamp_rejects_bad_values[yesterday]
+FAILED tests/test_transform.py::test_parse_till_timestamp_rejects_bad_values[14/09/2026]
+FAILED tests/test_transform.py::test_parse_till_timestamp_rejects_bad_values[2026-13-01T00:00:00]
+FAILED tests/test_transform.py::test_normalise_product_name[Flat White-Flat White]
+FAILED tests/test_transform.py::test_normalise_product_name[FLAT WHITE-Flat White]
+FAILED tests/test_transform.py::test_normalise_product_name[flat-white-Flat White]
+FAILED tests/test_transform.py::test_normalise_product_name[ Flat White -Flat White]
+FAILED tests/test_transform.py::test_normalise_product_name[pain-au-chocolat-Pain au Chocolat]
+FAILED tests/test_transform.py::test_normalise_product_name[Pain Au Choc-Pain au Chocolat]
+FAILED tests/test_transform.py::test_normalise_product_name[Tea-Breakfast Tea]
+FAILED tests/test_transform.py::test_normalise_product_name[hot choc-Hot Chocolate]
+FAILED tests/test_transform.py::test_normalise_product_name_unknown[] - NotIm...
+FAILED tests/test_transform.py::test_normalise_product_name_unknown[   ] - No...
+FAILED tests/test_transform.py::test_normalise_product_name_unknown[Mocha] - ...
+FAILED tests/test_transform.py::test_normalise_product_name_unknown[Flat] - N...
+39 failed, 1 passed in 0.12s
