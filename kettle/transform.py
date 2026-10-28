@@ -64,7 +64,9 @@ def format_pence(pence):
     >>> format_pence(-120)
     '-£1.20'
     """
-    raise NotImplementedError
+    sign = "-" if pence < 0 else ""
+    pounds, pennies = divmod(abs(pence), 100)
+    return f"{sign}£{pounds}.{pennies:02d}"
 
 
 def parse_price_to_pence(value, unit):
