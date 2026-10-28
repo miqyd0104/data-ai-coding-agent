@@ -24,19 +24,19 @@ def test_dublin_conversion_after_kc101():
     assert clean_rows([row], "dublin", 1.1712)[0]["unit_price_pence"] == 1000
 
 
-def test_inherited_negative_quantity():
+def test_negative_quantity_after_kc102():
     row = ["L1", "14/09/2026 09:00", "T1", "Latte", "-1", "3.50"]
-    # BUG: KC-102 treats a refund as a sale.
-    assert clean_rows([row], "leeds")[0]["line_total_pence"] == 350
+    # KC-102 corrected the original snapshot of +350 pence.
+    assert clean_rows([row], "leeds")[0]["line_total_pence"] == -350
 
 
-def test_inherited_deduplication_collision():
+def test_distinct_transactions_after_kc102():
     rows = [
         ["L1", "14/09/2026 09:00", "T1", "Latte", "1", "3.50"],
         ["L2", "14/09/2026 09:00", "T2", "Latte", "1", "3.50"],
     ]
-    # BUG: KC-102 drops a distinct transaction in the same minute.
-    assert len(clean_rows(rows, "leeds")) == 1
+    # KC-102 corrected the original snapshot of one row.
+    assert len(clean_rows(rows, "leeds")) == 2
 
 
 def test_exact_export_duplicate_is_removed():

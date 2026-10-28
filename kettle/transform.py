@@ -1,6 +1,7 @@
 from datetime import datetime
 from decimal import Decimal, InvalidOperation
 
+from kettle.branches import BRANCHES
 
 def clean_rows(rows, branch, eur_rate=None):
     cleaned = []
@@ -20,10 +21,10 @@ def clean_rows(rows, branch, eur_rate=None):
             else:
                 sold_at = datetime.fromisoformat(ts.strip())
 
-            # some tills export negative numbers by mistake
-            qty = abs(int(qty))
+            # Negative quantities are refunds, so preserve their sign.
+            qty = int(qty)
 
-            if branch == "manchester":
+            if BRANCHES[branch]["price_unit"] == "pence":
                 price_pence = int(price)
             else:
                 price_pence = int(round(float(price) * 100))
@@ -34,7 +35,7 @@ def clean_rows(rows, branch, eur_rate=None):
 
             product = product.strip().title()
 
-            key = (branch, sold_at, product)
+            key = (branch, txn_id, sold_at, till, product, qty, price_pence)
             if key in seen:
                 continue
             seen.add(key)
