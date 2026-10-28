@@ -1,45 +1,58 @@
 from datetime import datetime
-from decimal import Decimal, InvalidOperation
+from decimal import ROUND_HALF_UP, Decimal, InvalidOperation
 
 from kettle.branches import BRANCHES
 
-def clean_rows(rows, branch, eur_rate=None):
+def clean_rows(rows, branch, eur_rate=None, *, products, rejected=None, date=None):
+    """Validate till rows, preserve refunds, and remove exact duplicate sales.
+
+    Rejection metadata deliberately excludes raw row contents and customer data.
+    """
+    config = BRANCHES[branch]
+    rate = None
+    if config["currency"] == "EUR":
+        try:
+            rate = Decimal(str(eur_rate))
+        except InvalidOperation as error:
+            raise ValueError("A positive EUR-per-GBP rate is required") from error
+        if not rate.is_finite() or rate <= 0:
+            raise ValueError("A positive EUR-per-GBP rate is required")
     cleaned = []
     seen = set()
-    for row in rows:
+    for row_number, row in enumerate(rows, 1):
         try:
-            if len(row) == 0 or row[0] == "":
+            if not row:
                 continue
-
-            if branch == "dublin":
-                txn_id, ts, till, product, qty, price = row[5], row[0], row[4], row[1], row[3], row[2]
-            else:
-                txn_id, ts, till, product, qty, price = row
-
-            if branch == "leeds" or branch == "york":
-                sold_at = datetime.strptime(ts.strip(), "%d/%m/%Y %H:%M")
-            else:
-                sold_at = datetime.fromisoformat(ts.strip())
-
-            # Negative quantities are refunds, so preserve their sign.
-            qty = int(qty)
-
-            if BRANCHES[branch]["price_unit"] == "pence":
-                price_pence = int(price)
-            else:
-                price_pence = int(round(float(price) * 100))
-
-            if branch == "dublin":
-                # Rates use GBP as the base: EUR per GBP, so divide.
-                price_pence = int(round(Decimal(price_pence) / Decimal(str(eur_rate))))
-
-            product = product.strip().title()
-
-            key = (branch, txn_id, sold_at, till, product, qty, price_pence)
+            if len(row) != 6:
+                raise ValueError("Expected six till fields")
+            txn_id, ts, till, product, qty, price = (
+                row[index] for index in config.get("columns", range(6))
+            )
+            txn_id, till = txn_id.strip(), till.strip()
+            if not txn_id or not till:
+                raise ValueError("Missing transaction or till ID")
+            sold_at = parse_till_timestamp(ts)
+            if date is not None and sold_at.date().isoformat() != date:
+                raise ValueError("Timestamp does not match processing date")
+            try:
+                qty = int(qty)
+            except (ValueError, TypeError) as error:
+                raise ValueError("Invalid quantity") from error
+            source_price = parse_price_to_pence(price, config["price_unit"])
+            if source_price < 0:
+                raise ValueError("Unit price must not be negative")
+            product = normalise_product_name(product, products)
+            if product is None:
+                raise ValueError("Unknown or blank product")
+            key = (branch, txn_id, sold_at, till, product, qty, source_price)
             if key in seen:
                 continue
             seen.add(key)
-
+            price_pence = source_price
+            if rate is not None:
+                price_pence = int((Decimal(source_price) / rate).quantize(
+                    Decimal("1"), rounding=ROUND_HALF_UP
+                ))
             cleaned.append({
                 "transaction_id": txn_id,
                 "branch": branch,
@@ -50,13 +63,10 @@ def clean_rows(rows, branch, eur_rate=None):
                 "unit_price_pence": price_pence,
                 "line_total_pence": qty * price_pence,
             })
-        except:
-            pass
+        except (ValueError, TypeError) as error:
+            if rejected is not None:
+                rejected.append({"branch": branch, "row_number": row_number, "reason": str(error)})
     return cleaned
-
-
-# TODO(Andy): pull the parsing logic out of clean_rows into the helpers below so
-# it can be tested. Haven't got round to it yet - they just raise for now.
 
 
 def format_pence(pence):

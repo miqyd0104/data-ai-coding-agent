@@ -33,3 +33,12 @@ def write_summary(summary, output_dir, date):
         for row in summary:
             w.writerow(row)
     return path
+
+
+def write_rejections(rejected, output_dir, date):
+    path = os.path.join(output_dir, f"rejected_rows_{date}.csv")
+    with open(path, "w", newline="", encoding="utf-8") as stream:
+        writer = csv.DictWriter(stream, fieldnames=["date", "branch", "row_number", "reason"])
+        writer.writeheader()
+        writer.writerows({"date": date, **row} for row in rejected)
+    return path
